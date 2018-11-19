@@ -12,6 +12,7 @@
 		D319EE1821A2FFA000C3F79F /* SafeNest+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */; };
 		D319EE1A21A303A400C3F79F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1921A303A400C3F79F /* Utils.swift */; };
 		D319EE1C21A3050100C3F79F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1B21A3050100C3F79F /* Utils.swift */; };
+		D319EE1E21A33FDE00C3F79F /* SafeNest+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1D21A33FDE00C3F79F /* SafeNest+JSON.swift */; };
 		D3576EE921A2DFD70066898F /* SafeNest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3576EDF21A2DFD70066898F /* SafeNest.framework */; };
 		D3576EF021A2DFD70066898F /* SafeNest.h in Headers */ = {isa = PBXBuildFile; fileRef = D3576EE221A2DFD70066898F /* SafeNest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3576EFB21A2E0970066898F /* SafeNest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3576EF921A2E0970066898F /* SafeNest.swift */; };
@@ -39,6 +40,7 @@
 		D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+Modify.swift"; sourceTree = "<group>"; };
 		D319EE1921A303A400C3F79F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D319EE1B21A3050100C3F79F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D319EE1D21A33FDE00C3F79F /* SafeNest+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+JSON.swift"; sourceTree = "<group>"; };
 		D3576EDF21A2DFD70066898F /* SafeNest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SafeNest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3576EE221A2DFD70066898F /* SafeNest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeNest.h; sourceTree = "<group>"; };
 		D3576EE321A2DFD70066898F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				D3576EEF21A2DFD70066898F /* Info.plist */,
 				D3576EFD21A2E0BB0066898F /* SafeNest+Basic.swift */,
 				D319EE1B21A3050100C3F79F /* Utils.swift */,
+				D319EE1D21A33FDE00C3F79F /* SafeNest+JSON.swift */,
 			);
 			path = SafeNestTests;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D319EE1E21A33FDE00C3F79F /* SafeNest+JSON.swift in Sources */,
 				D3576EFE21A2E0BB0066898F /* SafeNest+Basic.swift in Sources */,
 				D319EE1C21A3050100C3F79F /* Utils.swift in Sources */,
 			);

@@ -59,6 +59,11 @@ public struct SafeNest {
     return clonedNest
   }
   
+  public func with(json: Data) throws -> SafeNest {
+    let object = try JSONSerialization.jsonObject(with: json, options: .allowFragments)
+    return self.with(object: object)
+  }
+  
   public func with(pathSeparator: String) -> SafeNest {
     var clonedNest = self.cloned()
     clonedNest.set(pathSeparator: pathSeparator)
