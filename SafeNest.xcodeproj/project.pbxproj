@@ -113,10 +113,10 @@
 		D3576EE121A2DFD70066898F /* SafeNest */ = {
 			isa = PBXGroup;
 			children = (
+				D3576EE321A2DFD70066898F /* Info.plist */,
+				D3576EE221A2DFD70066898F /* SafeNest.h */,
 				D3576EF921A2E0970066898F /* SafeNest.swift */,
 				D3576EFA21A2E0970066898F /* SafeNest+Access.swift */,
-				D3576EE221A2DFD70066898F /* SafeNest.h */,
-				D3576EE321A2DFD70066898F /* Info.plist */,
 				D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */,
 				D319EE1921A303A400C3F79F /* Utils.swift */,
 			);

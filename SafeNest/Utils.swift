@@ -17,3 +17,19 @@ func accessObjectPath(_ object: Any, _ path: String) -> Any? {
   
   return nil
 }
+
+func mapObjectPath(_ obj: Any, _ path: String, _ fn: (Any?) -> Any) -> Any? {
+  if var dict = obj as? [String : Any] {
+    dict[path] = fn(dict[path])
+    return dict
+  } else if let pathInt = Int(path), var arr = obj as? [Any] {
+    arr[pathInt] = fn(arr[pathInt])
+    return arr
+  }
+  
+  return nil
+}
+
+func updateObjectPath(_ obj: Any, _ path: String, _ value: Any) -> Any? {
+  return mapObjectPath(obj, path, {_ in value})
+}

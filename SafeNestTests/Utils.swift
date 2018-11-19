@@ -12,21 +12,23 @@ import XCTest
 public final class UtilTests: XCTestCase {
   public func test_accessAndUpdateDict() {
     /// Setup
-    let dict = ["1" : 2, "3" : 4]
+    let dict = ["1" : 2]
     
     /// When && Then
     XCTAssertEqual(accessObjectPath(dict, "1") as? Int, 2)
-    XCTAssertEqual(accessObjectPath(dict, "3") as? Int, 4)
+    XCTAssertEqual(updateObjectPath(dict, "1", 3) as? [String : Int], ["1" : 3])
   }
   
   public func test_accessAndUpdateArray() {
     /// Setup
-    let arr = [1, 2, 3, 4]
+    let arr = [1, 2, 3]
     
     /// When && Then
     XCTAssertEqual(accessObjectPath(arr, "0") as? Int, 1)
     XCTAssertEqual(accessObjectPath(arr, "1") as? Int, 2)
     XCTAssertEqual(accessObjectPath(arr, "2") as? Int, 3)
-    XCTAssertEqual(accessObjectPath(arr, "3") as? Int, 4)
+    XCTAssertEqual(updateObjectPath(arr, "0", 5) as? [Int], [5, 2, 3])
+    XCTAssertEqual(updateObjectPath(arr, "1", 6) as? [Int], [1, 6, 3])
+    XCTAssertEqual(updateObjectPath(arr, "2", 7) as? [Int], [1, 2, 7])
   }
 }

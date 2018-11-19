@@ -6,6 +6,8 @@
 //  Copyright © 2018 swiften. All rights reserved.
 //
 
+import SwiftFP
+
 public protocol SafeNestType {
   var object: [String : Any] { get }
   var pathSeparator: String { get }
@@ -15,7 +17,7 @@ struct SafeNest {
   let object: [String : Any]
   let pathSeparator: String
   
-  public init(object: [String : Any], pathSeparator: String = ".") {
+  public init(object: [String : Any] = [:], pathSeparator: String = ".") {
     self.object = object
     self.pathSeparator = pathSeparator
   }
