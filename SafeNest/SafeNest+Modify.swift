@@ -20,14 +20,14 @@ public extension SafeNest {
                              _ subpaths: [String]) throws {
     if let subpath0 = subpaths.first {
       if subpaths.count == 1 {
-        let updated = try mapObjectPath(self._object, subpath0, mapper)
+        let updated = try mapObjectPath(self.object, subpath0, mapper)
         self.set(object: updated)
       } else if subpaths.count > 1 {
-        let object0 = accessObjectPath(self._object, subpath0) ?? [String : Any]()
+        let object0 = accessObjectPath(self.object, subpath0) ?? [String : Any]()
         var subNest = self.cloned()
         subNest.set(object: object0)
         try subNest._map(mapper, Array(subpaths[1...]))
-        let updated = try updateObjectPath(self._object, subpath0, subNest._object)
+        let updated = try updateObjectPath(self.object, subpath0, subNest.object)
         self.set(object: updated)
       }
     }
@@ -42,7 +42,7 @@ public extension SafeNest {
   /// - Throws: If mapping fails.
   public mutating func map(withMapper fn: (Any?) throws -> Any,
                            at node: String) throws {
-    let nodeComponents = node.components(separatedBy: self._pathSeparator)
+    let nodeComponents = node.components(separatedBy: self.pathSeparator)
     try self._map(fn, nodeComponents)
   }
   

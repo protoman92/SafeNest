@@ -23,27 +23,45 @@ import SwiftFP
 /// For now, only several data types are supported, namely dicts and arrays.
 /// This should suffice for most situations, however.
 public struct SafeNest {
-  var _object: Any
-  var _pathSeparator: String
+  private var _object: Any
+  private var _pathSeparator: String
   
   public var object: Any {
     return self._object
   }
   
-  public var pathSeparator: Any {
+  public var pathSeparator: String {
     return self._pathSeparator
   }
   
-  public init(object: Any = [:], pathSeparator: String = ".") {
-    self._object = object
-    self._pathSeparator = pathSeparator
+  public init(initialObject: Any = [:]) {
+    self._object = initialObject
+    self._pathSeparator = "."
   }
   
   mutating func set(object: Any) {
     self._object = object
   }
   
-  func cloned() -> SafeNest {
-    return SafeNest(object: self._object, pathSeparator: self._pathSeparator)
+  mutating func set(pathSeparator: String) {
+    self._pathSeparator = pathSeparator
+  }
+  
+  public func cloned() -> SafeNest {
+    var newNest = SafeNest(initialObject: self._object)
+    newNest.set(pathSeparator: self._pathSeparator)
+    return newNest
+  }
+  
+  public func with(object: Any) -> SafeNest {
+    var clonedNest = self.cloned()
+    clonedNest.set(object: object)
+    return clonedNest
+  }
+  
+  public func with(pathSeparator: String) -> SafeNest {
+    var clonedNest = self.cloned()
+    clonedNest.set(pathSeparator: pathSeparator)
+    return clonedNest
   }
 }

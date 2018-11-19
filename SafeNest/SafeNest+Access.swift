@@ -15,8 +15,8 @@ public extension SafeNest {
   /// - Parameter node: The path at which to find the value.
   /// - Returns: A Try instance containing either the value or an access error.
   public func value(at node: String) -> Try<Any> {
-    let subpaths = node.components(separatedBy: self._pathSeparator)
-    var currentResult: Any = self._object
+    let subpaths = node.components(separatedBy: self.pathSeparator)
+    var currentResult: Any = self.object
     
     for subpath in subpaths {
       guard let interResult = accessObjectPath(currentResult, subpath) else {

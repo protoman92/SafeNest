@@ -15,7 +15,7 @@ public final class BasicTests: XCTestCase {
   override public func setUp() {
     super.setUp()
     
-    self.safeNest = SafeNest(object: [
+    self.safeNest = SafeNest(initialObject: [
       "a1": [
         "b1": [
           "c1": ["d1": 1, "d2": 2],
