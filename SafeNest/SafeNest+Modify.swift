@@ -8,9 +8,9 @@
 
 import SwiftFP
 
-extension SafeNest {
+public extension SafeNest {
   private mutating func _map(_ mapper: (Any?) throws -> Any,
-                             _ subpaths: [String]) throws -> SafeNest {
+                             _ subpaths: [String]) throws {
     if let subpath0 = subpaths.first {
       if subpaths.count == 1 {
         let updated = try mapObjectPath(self._object, subpath0, mapper)
@@ -19,22 +19,33 @@ extension SafeNest {
         let object0 = accessObjectPath(self._object, subpath0) ?? [String : Any]()
         var subNest = self.cloned()
         subNest.set(object: object0)
-        let updated0 = try subNest._map(mapper, Array(subpaths[1...]))._object
-        let updated = try updateObjectPath(self._object, subpath0, updated0)
+        try subNest._map(mapper, Array(subpaths[1...]))
+        let updated = try updateObjectPath(self._object, subpath0, subNest._object)
         self.set(object: updated)
       }
     }
-
-    return self
   }
   
   public mutating func map(withMapper fn: (Any?) throws -> Any,
-                           at node: String) throws -> SafeNest {
+                           at node: String) throws {
     let nodeComponents = node.components(separatedBy: self._pathSeparator)
-    return try self._map(fn, nodeComponents)
+    try self._map(fn, nodeComponents)
   }
   
-  public mutating func update(value: Any, at node: String) throws -> SafeNest {
-    return try self.map(withMapper: {_ in value}, at: node)
+  public func mapping(withMapper fn: (Any?) throws -> Any,
+                      at node: String) throws -> SafeNest {
+    var clonedNest = self.cloned()
+    try clonedNest.map(withMapper: fn, at: node)
+    return clonedNest
+  }
+}
+
+public extension SafeNest {
+  public mutating func update(value: Any, at node: String) throws {
+    try self.map(withMapper: {_ in value}, at: node)
+  }
+  
+  public func updating(value: Any, at node: String) throws -> SafeNest {
+    return try self.mapping(withMapper: {_ in value}, at: node)
   }
 }

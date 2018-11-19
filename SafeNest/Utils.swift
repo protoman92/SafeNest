@@ -37,9 +37,7 @@ func accessObjectPath(_ object: Any, _ path: String) -> Any? {
   return nil
 }
 
-func mapObjectPath(_ obj: Any,
-                   _ path: String,
-                   _ fn: (Any?) throws -> Any) throws -> Any {
+func mapObjectPath(_ obj: Any, _ path: String, _ fn: (Any?) throws -> Any) throws -> Any {
   if var dict = obj as? [String : Any] {
     dict[path] = try fn(dict[path])
     return dict

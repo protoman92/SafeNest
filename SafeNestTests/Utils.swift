@@ -30,5 +30,7 @@ public final class UtilTests: XCTestCase {
     XCTAssertEqual(try! updateObjectPath(arr, "0", 5) as? [Int], [5, 2, 3])
     XCTAssertEqual(try! updateObjectPath(arr, "1", 6) as? [Int], [1, 6, 3])
     XCTAssertEqual(try! updateObjectPath(arr, "2", 7) as? [Int], [1, 2, 7])
+    XCTAssertEqual(try! updateObjectPath(arr, "5", 1) as? [Int?], [1, 2, 3, nil, nil, 1])
+    XCTAssertThrowsError(try updateObjectPath(arr, "-1", 1)) {XCTAssertTrue($0 is SafeNestError)}
   }
 }

@@ -8,8 +8,8 @@
 
 import SwiftFP
 
-extension SafeNest {
-  func value(at node: String) -> Try<Any> {
+public extension SafeNest {
+  public func value(at node: String) -> Try<Any> {
     let subpaths = node.components(separatedBy: self._pathSeparator)
     var currentResult: Any = self._object
     
