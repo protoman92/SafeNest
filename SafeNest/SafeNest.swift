@@ -8,19 +8,28 @@
 
 import SwiftFP
 
-public protocol SafeNestType {
-  var object: [String : Any] { get }
-  var pathSeparator: String { get }
-}
-
-struct SafeNest {
-  let object: [String : Any]
-  let pathSeparator: String
+public struct SafeNest {
+  var _object: Any
+  var _pathSeparator: String
   
-  public init(object: [String : Any] = [:], pathSeparator: String = ".") {
-    self.object = object
-    self.pathSeparator = pathSeparator
+  public var object: Any {
+    return self._object
+  }
+  
+  public var pathSeparator: Any {
+    return self._pathSeparator
+  }
+  
+  public init(object: Any = [:], pathSeparator: String = ".") {
+    self._object = object
+    self._pathSeparator = pathSeparator
+  }
+  
+  mutating func set(object: Any) {
+    self._object = object
+  }
+  
+  func cloned() -> SafeNest {
+    return SafeNest(object: self._object, pathSeparator: self._pathSeparator)
   }
 }
-
-extension SafeNest: SafeNestType {}

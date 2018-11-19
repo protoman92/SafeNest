@@ -10,8 +10,8 @@ import SwiftFP
 
 extension SafeNest {
   func value(at node: String) -> Try<Any> {
-    let subpaths = node.components(separatedBy: self.pathSeparator)
-    var currentResult: Any = self.object
+    let subpaths = node.components(separatedBy: self._pathSeparator)
+    var currentResult: Any = self._object
     
     for subpath in subpaths {
       guard let interResult = accessObjectPath(currentResult, subpath) else {
@@ -21,6 +21,6 @@ extension SafeNest {
       currentResult = interResult
     }
     
-    return Try.success(currentResult)
+    return Try(currentResult)
   }
 }
