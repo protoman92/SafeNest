@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1CCB0E1CA1146D804E917796 /* libPods-SafeNestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 668F277185D5C03F0AC2B684 /* libPods-SafeNestTests.a */; };
 		A313A6E2386BF69872E49AE4 /* libPods-SafeNest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52557BD1B5266969BFB50067 /* libPods-SafeNest.a */; };
+		D319EE1821A2FFA000C3F79F /* SafeNest+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */; };
+		D319EE1A21A303A400C3F79F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1921A303A400C3F79F /* Utils.swift */; };
+		D319EE1C21A3050100C3F79F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1B21A3050100C3F79F /* Utils.swift */; };
 		D3576EE921A2DFD70066898F /* SafeNest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3576EDF21A2DFD70066898F /* SafeNest.framework */; };
 		D3576EF021A2DFD70066898F /* SafeNest.h in Headers */ = {isa = PBXBuildFile; fileRef = D3576EE221A2DFD70066898F /* SafeNest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3576EFB21A2E0970066898F /* SafeNest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3576EF921A2E0970066898F /* SafeNest.swift */; };
@@ -33,6 +36,9 @@
 		668F277185D5C03F0AC2B684 /* libPods-SafeNestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeNestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87889BA8568D5576EBF20A76 /* Pods-SafeNest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNest.debug.xcconfig"; path = "Target Support Files/Pods-SafeNest/Pods-SafeNest.debug.xcconfig"; sourceTree = "<group>"; };
 		8FF835CB1A8E191685002019 /* Pods-SafeNestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNestTests.release.xcconfig"; path = "Target Support Files/Pods-SafeNestTests/Pods-SafeNestTests.release.xcconfig"; sourceTree = "<group>"; };
+		D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+Modify.swift"; sourceTree = "<group>"; };
+		D319EE1921A303A400C3F79F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D319EE1B21A3050100C3F79F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D3576EDF21A2DFD70066898F /* SafeNest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SafeNest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3576EE221A2DFD70066898F /* SafeNest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeNest.h; sourceTree = "<group>"; };
 		D3576EE321A2DFD70066898F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +117,8 @@
 				D3576EFA21A2E0970066898F /* SafeNest+Access.swift */,
 				D3576EE221A2DFD70066898F /* SafeNest.h */,
 				D3576EE321A2DFD70066898F /* Info.plist */,
+				D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */,
+				D319EE1921A303A400C3F79F /* Utils.swift */,
 			);
 			path = SafeNest;
 			sourceTree = "<group>";
@@ -118,8 +126,9 @@
 		D3576EEC21A2DFD70066898F /* SafeNestTests */ = {
 			isa = PBXGroup;
 			children = (
-				D3576EFD21A2E0BB0066898F /* SafeNest+Basic.swift */,
 				D3576EEF21A2DFD70066898F /* Info.plist */,
+				D3576EFD21A2E0BB0066898F /* SafeNest+Basic.swift */,
+				D319EE1B21A3050100C3F79F /* Utils.swift */,
 			);
 			path = SafeNestTests;
 			sourceTree = "<group>";
@@ -283,8 +292,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D319EE1821A2FFA000C3F79F /* SafeNest+Modify.swift in Sources */,
 				D3576EFC21A2E0970066898F /* SafeNest+Access.swift in Sources */,
 				D3576EFB21A2E0970066898F /* SafeNest.swift in Sources */,
+				D319EE1A21A303A400C3F79F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3576EFE21A2E0BB0066898F /* SafeNest+Basic.swift in Sources */,
+				D319EE1C21A3050100C3F79F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

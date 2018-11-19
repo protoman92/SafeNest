@@ -8,21 +8,17 @@
 
 import SwiftFP
 
-extension SafeNestType {
+extension SafeNest {
   func value(at node: String) -> Try<Any> {
     let subpaths = node.components(separatedBy: self.pathSeparator)
     var currentResult: Any = self.object
     
     for subpath in subpaths {
-      if
-        let dict = currentResult as? [String : Any],
-        let intermediateResult = dict[subpath] {
-        currentResult = intermediateResult
-      } else if let pathInt = Int(subpath), let arr = currentResult as? [Any] {
-        currentResult = arr[pathInt]
-      } else {
+      guard let interResult = accessObjectPath(currentResult, subpath) else {
         return Try.failure("No value found at \(node)")
       }
+      
+      currentResult = interResult
     }
     
     return Try.success(currentResult)
