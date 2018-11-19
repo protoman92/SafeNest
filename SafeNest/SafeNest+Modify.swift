@@ -9,6 +9,13 @@
 import SwiftFP
 
 public extension SafeNest {
+
+  /// Map a value at a node internally. This method mutates.
+  ///
+  /// - Parameters:
+  ///   - mapper: The mapper function.
+  ///   - subpaths: An Array of subpaths to access and update the nested value.
+  /// - Throws: If mapping fails.
   private mutating func _map(_ mapper: (Any?) throws -> Any,
                              _ subpaths: [String]) throws {
     if let subpath0 = subpaths.first {
@@ -26,12 +33,26 @@ public extension SafeNest {
     }
   }
   
+  /// Public method for mapping. Here we split the node path into components
+  /// and feed them to an internal mapping method.
+  ///
+  /// - Parameters:
+  ///   - fn: The mapper function.
+  ///   - node: The path at which to map.
+  /// - Throws: If mapping fails.
   public mutating func map(withMapper fn: (Any?) throws -> Any,
                            at node: String) throws {
     let nodeComponents = node.components(separatedBy: self._pathSeparator)
     try self._map(fn, nodeComponents)
   }
   
+  /// This method maps, but does not mutate because it returns a new nest.
+  ///
+  /// - Parameters:
+  ///   - fn: The mapper function.
+  ///   - node: The path at which to map.
+  /// - Returns: A new nest.
+  /// - Throws: If mapping fails.
   public func mapping(withMapper fn: (Any?) throws -> Any,
                       at node: String) throws -> SafeNest {
     var clonedNest = self.cloned()
@@ -41,10 +62,24 @@ public extension SafeNest {
 }
 
 public extension SafeNest {
+
+  /// Instead of mapping a value, simply replace it. This method mutates.
+  ///
+  /// - Parameters:
+  ///   - value: The value to update.
+  ///   - node: The path at which to update.
+  /// - Throws: If updating fails.
   public mutating func update(value: Any, at node: String) throws {
     try self.map(withMapper: {_ in value}, at: node)
   }
   
+  /// Updates but does not mutate, instead returns a new nest.
+  ///
+  /// - Parameters:
+  ///   - value: The value to update.
+  ///   - node: The path at which to update.
+  /// - Returns: A new nest.
+  /// - Throws: If updating fails.
   public func updating(value: Any, at node: String) throws -> SafeNest {
     return try self.mapping(withMapper: {_ in value}, at: node)
   }

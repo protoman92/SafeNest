@@ -9,6 +9,11 @@
 import SwiftFP
 
 public extension SafeNest {
+
+  /// Access a value at a nested node.
+  ///
+  /// - Parameter node: The path at which to find the value.
+  /// - Returns: A Try instance containing either the value or an access error.
   public func value(at node: String) -> Try<Any> {
     let subpaths = node.components(separatedBy: self._pathSeparator)
     var currentResult: Any = self._object
