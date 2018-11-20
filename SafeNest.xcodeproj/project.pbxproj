@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1CCB0E1CA1146D804E917796 /* libPods-SafeNestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 668F277185D5C03F0AC2B684 /* libPods-SafeNestTests.a */; };
 		A313A6E2386BF69872E49AE4 /* libPods-SafeNest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52557BD1B5266969BFB50067 /* libPods-SafeNest.a */; };
+		D3160BB221A47028006A12F3 /* SafeNest+Stress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3160BB121A47028006A12F3 /* SafeNest+Stress.swift */; };
 		D319EE1821A2FFA000C3F79F /* SafeNest+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */; };
 		D319EE1A21A303A400C3F79F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1921A303A400C3F79F /* Utils.swift */; };
 		D319EE1C21A3050100C3F79F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1B21A3050100C3F79F /* Utils.swift */; };
@@ -38,6 +39,7 @@
 		668F277185D5C03F0AC2B684 /* libPods-SafeNestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeNestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87889BA8568D5576EBF20A76 /* Pods-SafeNest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNest.debug.xcconfig"; path = "Target Support Files/Pods-SafeNest/Pods-SafeNest.debug.xcconfig"; sourceTree = "<group>"; };
 		8FF835CB1A8E191685002019 /* Pods-SafeNestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNestTests.release.xcconfig"; path = "Target Support Files/Pods-SafeNestTests/Pods-SafeNestTests.release.xcconfig"; sourceTree = "<group>"; };
+		D3160BB121A47028006A12F3 /* SafeNest+Stress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+Stress.swift"; sourceTree = "<group>"; };
 		D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+Modify.swift"; sourceTree = "<group>"; };
 		D319EE1921A303A400C3F79F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D319EE1B21A3050100C3F79F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				D3576EFD21A2E0BB0066898F /* SafeNest+Basic.swift */,
 				D319EE1F21A3484C00C3F79F /* SafeNest+Immutable.swift */,
 				D319EE1D21A33FDE00C3F79F /* SafeNest+JSON.swift */,
+				D3160BB121A47028006A12F3 /* SafeNest+Stress.swift */,
 				D319EE1B21A3050100C3F79F /* Utils.swift */,
 			);
 			path = SafeNestTests;
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3160BB221A47028006A12F3 /* SafeNest+Stress.swift in Sources */,
 				D319EE1E21A33FDE00C3F79F /* SafeNest+JSON.swift in Sources */,
 				D3576EFE21A2E0BB0066898F /* SafeNest+Basic.swift in Sources */,
 				D319EE1C21A3050100C3F79F /* Utils.swift in Sources */,
