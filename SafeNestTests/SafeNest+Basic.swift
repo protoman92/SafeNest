@@ -68,20 +68,26 @@ public final class BasicTests: XCTestCase {
     XCTAssertEqual(safeNest.value(at: path5).value as? String, "2")
   }
   
-  public func test_copyNestedProps() {
+  public func test_copyAndMoveNestedProps() {
     /// Setup
     var safeNest = self.safeNest!
     let path1 = "a1.b1.c2.d3.2"
     let path2 = "a10.b3.c10.d12.e13.f15"
+    let path3 = "a1.b3"
+    let path4 = "a1.b2.c2"
     
     /// When
-    let old = try! safeNest.copy(from: path1, to: path2)
+    let old12 = try! safeNest.copy(from: path1, to: path2)
+    let old34 = try! safeNest.move(from: path3, to: path4)
     
     /// Then
-    print(safeNest.object)
+    XCTAssertNil(old12)
+    XCTAssertEqual(old34 as? Int, 10)
+    
     XCTAssertEqual(safeNest.value(at: path1).value as! Int,
                    safeNest.value(at: path2).value as! Int)
     
-    XCTAssertNil(old)
+    XCTAssertNil(safeNest.value(at: path3).value)
+    XCTAssertEqual(safeNest.value(at: path4).value as? Int, 100)
   }
 }

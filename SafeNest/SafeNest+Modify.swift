@@ -17,7 +17,7 @@ public extension SafeNest {
   ///   - subpaths: An Array of subpaths to access and update the nested value.
   /// - Returns: The old value found at the end of the paths.
   /// - Throws: If mapping fails.
-  private mutating func _map(_ mapper: (Any?) throws -> Any,
+  private mutating func _map(_ mapper: (Any?) throws -> Any?,
                              _ subpaths: [String]) throws -> Any? {
     var oldValue: Any? = nil
     
@@ -47,7 +47,7 @@ public extension SafeNest {
   ///   - node: The path at which to map.
   /// - Returns: The old value found at the specified node.
   /// - Throws: If mapping fails.
-  public mutating func map(withMapper fn: (Any?) throws -> Any,
+  public mutating func map(withMapper fn: (Any?) throws -> Any?,
                            at node: String) throws -> Any? {
     let nodeComponents = node.components(separatedBy: self.pathSeparator)
     return try self._map(fn, nodeComponents)
@@ -77,7 +77,7 @@ public extension SafeNest {
   ///   - node: The path at which to update.
   /// - Returns: The old value found at specified node.
   /// - Throws: If updating fails.
-  public mutating func update(value: Any, at node: String) throws -> Any? {
+  public mutating func update(value: Any?, at node: String) throws -> Any? {
     return try self.map(withMapper: {_ in value}, at: node)
   }
   
@@ -117,6 +117,35 @@ public extension SafeNest {
   public func copying(from node1: String, to node2: String) throws -> SafeNest {
     var clonedNest = self.cloned()
     _ = try clonedNest.copy(from: node1, to: node2)
+    return clonedNest
+  }
+}
+
+public extension SafeNest {
+
+  /// Moves value from one path to another. This method mutates.
+  ///
+  /// - Parameters:
+  ///   - node1: The path at which the moved value is found.
+  ///   - node2: The path to move the value to.
+  /// - Returns: The old value found at the second node.
+  /// - Throws: If moving fails.
+  public mutating func move(from node1: String, to node2: String) throws -> Any? {
+    let old1 = try self.update(value: nil, at: node1)
+    let old2 = try self.update(value: old1, at: node2)
+    return old2
+  }
+  
+  /// Moves value from one path to another and return a new nest.
+  ///
+  /// - Parameters:
+  ///   - node1: The path at which the moved value is found.
+  ///   - node2: The path to move the value to.
+  /// - Returns: A new nest.
+  /// - Throws: If moving fails.
+  public func moving(from node1: String, to node2: String) throws -> SafeNest {
+    var clonedNest = self.cloned()
+    _ = try clonedNest.move(from: node1, to: node2)
     return clonedNest
   }
 }

@@ -37,7 +37,7 @@ func accessObjectPath(_ object: Any, _ path: String) -> Any? {
   return nil
 }
 
-func mapObjectPath(_ obj: Any, _ path: String, _ fn: (Any?) throws -> Any) throws
+func mapObjectPath(_ obj: Any, _ path: String, _ fn: (Any?) throws -> Any?) throws
   -> (newObject: Any, oldValue: Any?) {
   if var dict = obj as? [String : Any] {
     let oldValue = dict[path]
@@ -56,7 +56,7 @@ func mapObjectPath(_ obj: Any, _ path: String, _ fn: (Any?) throws -> Any) throw
   throw SafeNestError.unsupportedType(obj: obj, path: path)
 }
 
-func updateObjectPath(_ obj: Any, _ path: String, _ value: Any) throws
+func updateObjectPath(_ obj: Any, _ path: String, _ value: Any?) throws
   -> (newObject: Any, oldValue: Any?) {
   return try mapObjectPath(obj, path, {_ in value})
 }
