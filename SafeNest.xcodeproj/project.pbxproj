@@ -132,9 +132,9 @@
 			children = (
 				D3576EEF21A2DFD70066898F /* Info.plist */,
 				D3576EFD21A2E0BB0066898F /* SafeNest+Basic.swift */,
-				D319EE1B21A3050100C3F79F /* Utils.swift */,
-				D319EE1D21A33FDE00C3F79F /* SafeNest+JSON.swift */,
 				D319EE1F21A3484C00C3F79F /* SafeNest+Immutable.swift */,
+				D319EE1D21A33FDE00C3F79F /* SafeNest+JSON.swift */,
+				D319EE1B21A3050100C3F79F /* Utils.swift */,
 			);
 			path = SafeNestTests;
 			sourceTree = "<group>";

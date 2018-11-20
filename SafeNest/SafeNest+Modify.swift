@@ -10,7 +10,7 @@ import SwiftFP
 
 public extension SafeNest {
 
-  /// Map a value at a node internally. This method mutates.
+  /// Maps a value at a node internally. This method mutates.
   ///
   /// - Parameters:
   ///   - mapper: The mapper function.
@@ -63,7 +63,7 @@ public extension SafeNest {
 
 public extension SafeNest {
 
-  /// Instead of mapping a value, simply replace it. This method mutates.
+  /// Instead of mapping a value, simply replaces it. This method mutates.
   ///
   /// - Parameters:
   ///   - value: The value to update.
@@ -82,5 +82,32 @@ public extension SafeNest {
   /// - Throws: If updating fails.
   public func updating(value: Any, at node: String) throws -> SafeNest {
     return try self.mapping(withMapper: {_ in value}, at: node)
+  }
+}
+
+public extension SafeNest {
+  
+  /// Copies value from one path to another. This method mutates.
+  ///
+  /// - Parameters:
+  ///   - node1: The path at which the copied value is found.
+  ///   - node2: The path to copy the value to.
+  /// - Throws: If copying fails.
+  public mutating func copy(from node1: String, to node2: String) throws {
+    let copiedValue = self.value(at: node1).value
+    try self.update(value: copiedValue as Any, at: node2)
+  }
+  
+  /// Copies value from one path to another and return a new nest.
+  ///
+  /// - Parameters:
+  ///   - node1: The path at which the copied value is found.
+  ///   - node2: The path to copy the value to.
+  /// - Returns: A new nest.
+  /// - Throws: If copying fails.
+  public func copying(from node1: String, to node2: String) throws -> SafeNest {
+    var clonedNest = self.cloned()
+    try clonedNest.copy(from: node1, to: node2)
+    return clonedNest
   }
 }
