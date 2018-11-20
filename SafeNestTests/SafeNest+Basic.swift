@@ -40,18 +40,18 @@ public final class BasicTests: XCTestCase {
     /// Setup
     var safeNest = self.safeNest!
     let path1 = "a1.b2.c3.d1.e1"
-    let value1 = 2
     let path2 = "a1.b1.c1.d1"
-    let value2 = 100
     let path3 = "a2.b10.10.c19.d190"
-    let value3 = "Hello world"
     let path4 = "a1.b1.c2.d3.10.e99"
-    let value4 = ["z10": 200]
     let path5 = "a1.b1.c2.d3.1"
+    let value1 = 2
+    let value2 = 100
+    let value3 = "Hello world"
+    let value4 = ["z10": 200]
     
     /// When
-    try! safeNest.update(value: value1, at: path1)
-    try! safeNest.update(value: value2, at: path2)
+    let old1 = try! safeNest.update(value: value1, at: path1)
+    let old2 = try! safeNest.update(value: value2, at: path2)
     
     safeNest = try! safeNest
       .updating(value: value3, at: path3)
@@ -59,6 +59,8 @@ public final class BasicTests: XCTestCase {
       .mapping(withMapper: {"\($0!)"}, at: path5)
     
     /// Then
+    XCTAssertNil(old1)
+    XCTAssertEqual(old2 as? Int, 1)
     XCTAssertEqual(safeNest.value(at: path1).value as? Int, value1)
     XCTAssertEqual(safeNest.value(at: path2).value as? Int, value2)
     XCTAssertEqual(safeNest.value(at: path3).value as? String, value3)
@@ -73,10 +75,13 @@ public final class BasicTests: XCTestCase {
     let path2 = "a10.b3.c10.d12.e13.f15"
     
     /// When
-    try! safeNest.copy(from: path1, to: path2)
+    let old = try! safeNest.copy(from: path1, to: path2)
     
     /// Then
+    print(safeNest.object)
     XCTAssertEqual(safeNest.value(at: path1).value as! Int,
                    safeNest.value(at: path2).value as! Int)
+    
+    XCTAssertNil(old)
   }
 }

@@ -17,8 +17,8 @@ public final class ImmutableTests: XCTestCase {
     var nest = SafeNest(initialObject: dict)
     
     /// When
-    try! nest.update(value: 10, at: "a")
-    try! nest.update(value: 20, at: "b.10")
+    _ = try! nest.update(value: 10, at: "a")
+    _ = try! nest.update(value: 20, at: "b.10")
     
     /// Then
     XCTAssertEqual(nest.value(at: "a").value as? Int, 10)

@@ -37,24 +37,26 @@ func accessObjectPath(_ object: Any, _ path: String) -> Any? {
   return nil
 }
 
-func mapObjectPath(_ obj: Any, _ path: String, _ fn: (Any?) throws -> Any) throws -> Any {
+func mapObjectPath(_ obj: Any, _ path: String, _ fn: (Any?) throws -> Any) throws
+  -> (newObject: Any, oldValue: Any?) {
   if var dict = obj as? [String : Any] {
-    dict[path] = try fn(dict[path])
-    return dict
+    let oldValue = dict[path]
+    dict[path] = try fn(oldValue)
+    return (dict, oldValue)
   } else if let pathInt = Int(path), var arr = obj as? [Any?], pathInt >= 0 {
-    if pathInt < arr.count {
-      arr[pathInt] = try fn(arr[pathInt])
-    } else {
+    if pathInt >= arr.count {
       (arr.count...pathInt).forEach({_ in arr.append(nil as Any?)})
-      arr[pathInt] = try fn(arr[pathInt])
     }
     
-    return arr
+    let oldValue = arr[pathInt]
+    arr[pathInt] = try fn(oldValue)
+    return (arr, oldValue)
   }
   
   throw SafeNestError.unsupportedType(obj: obj, path: path)
 }
 
-func updateObjectPath(_ obj: Any, _ path: String, _ value: Any) throws -> Any {
+func updateObjectPath(_ obj: Any, _ path: String, _ value: Any) throws
+  -> (newObject: Any, oldValue: Any?) {
   return try mapObjectPath(obj, path, {_ in value})
 }

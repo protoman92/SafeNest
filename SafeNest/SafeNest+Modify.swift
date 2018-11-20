@@ -15,22 +15,28 @@ public extension SafeNest {
   /// - Parameters:
   ///   - mapper: The mapper function.
   ///   - subpaths: An Array of subpaths to access and update the nested value.
+  /// - Returns: The old value found at the end of the paths.
   /// - Throws: If mapping fails.
   private mutating func _map(_ mapper: (Any?) throws -> Any,
-                             _ subpaths: [String]) throws {
+                             _ subpaths: [String]) throws -> Any? {
+    var oldValue: Any? = nil
+    
     if let subpath0 = subpaths.first {
       if subpaths.count == 1 {
-        let updated = try mapObjectPath(self.object, subpath0, mapper)
+        let (updated, old) = try mapObjectPath(self.object, subpath0, mapper)
         self.set(object: updated)
+        oldValue = old
       } else if subpaths.count > 1 {
         let object0 = accessObjectPath(self.object, subpath0) ?? [String : Any]()
         var subNest = self.cloned()
         subNest.set(object: object0)
-        try subNest._map(mapper, Array(subpaths[1...]))
-        let updated = try updateObjectPath(self.object, subpath0, subNest.object)
+        oldValue = try subNest._map(mapper, Array(subpaths[1...]))
+        let (updated, _) = try updateObjectPath(self.object, subpath0, subNest.object)
         self.set(object: updated)
       }
     }
+    
+    return oldValue
   }
   
   /// Public method for mapping. Here we split the node path into components
@@ -39,11 +45,12 @@ public extension SafeNest {
   /// - Parameters:
   ///   - fn: The mapper function.
   ///   - node: The path at which to map.
+  /// - Returns: The old value found at the specified node.
   /// - Throws: If mapping fails.
   public mutating func map(withMapper fn: (Any?) throws -> Any,
-                           at node: String) throws {
+                           at node: String) throws -> Any? {
     let nodeComponents = node.components(separatedBy: self.pathSeparator)
-    try self._map(fn, nodeComponents)
+    return try self._map(fn, nodeComponents)
   }
   
   /// This method maps, but does not mutate because it returns a new nest.
@@ -56,7 +63,7 @@ public extension SafeNest {
   public func mapping(withMapper fn: (Any?) throws -> Any,
                       at node: String) throws -> SafeNest {
     var clonedNest = self.cloned()
-    try clonedNest.map(withMapper: fn, at: node)
+    _ = try clonedNest.map(withMapper: fn, at: node)
     return clonedNest
   }
 }
@@ -68,9 +75,10 @@ public extension SafeNest {
   /// - Parameters:
   ///   - value: The value to update.
   ///   - node: The path at which to update.
+  /// - Returns: The old value found at specified node.
   /// - Throws: If updating fails.
-  public mutating func update(value: Any, at node: String) throws {
-    try self.map(withMapper: {_ in value}, at: node)
+  public mutating func update(value: Any, at node: String) throws -> Any? {
+    return try self.map(withMapper: {_ in value}, at: node)
   }
   
   /// Updates but does not mutate, instead returns a new nest.
@@ -92,10 +100,11 @@ public extension SafeNest {
   /// - Parameters:
   ///   - node1: The path at which the copied value is found.
   ///   - node2: The path to copy the value to.
+  /// - Returns: The old value found at the second node.
   /// - Throws: If copying fails.
-  public mutating func copy(from node1: String, to node2: String) throws {
+  public mutating func copy(from node1: String, to node2: String) throws -> Any? {
     let copiedValue = self.value(at: node1).value
-    try self.update(value: copiedValue as Any, at: node2)
+    return try self.update(value: copiedValue as Any, at: node2)
   }
   
   /// Copies value from one path to another and return a new nest.
@@ -107,7 +116,7 @@ public extension SafeNest {
   /// - Throws: If copying fails.
   public func copying(from node1: String, to node2: String) throws -> SafeNest {
     var clonedNest = self.cloned()
-    try clonedNest.copy(from: node1, to: node2)
+    _ = try clonedNest.copy(from: node1, to: node2)
     return clonedNest
   }
 }
