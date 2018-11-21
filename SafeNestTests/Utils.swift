@@ -10,12 +10,12 @@ import XCTest
 @testable import SafeNest
 
 public final class UtilTests: XCTestCase {
-  public func test_accessAndUpdateDict() {
+  public func test_accessAndUpdateDict() throws {
     /// Setup
     let dict = ["1" : 2]
     
     /// When
-    let (updated1, old1) = try! updateObjectPath(dict, "1", 3)
+    let (updated1, old1) = try updateObjectPath(dict, "1", 3)
     
     /// Then
     XCTAssertEqual(accessObjectPath(dict, "1") as? Int, 2)
@@ -23,15 +23,15 @@ public final class UtilTests: XCTestCase {
     XCTAssertEqual(old1 as? Int, 2)
   }
   
-  public func test_accessAndUpdateArray() {
+  public func test_accessAndUpdateArray() throws {
     /// Setup
     let arr = [1, 2, 3]
     
     /// When
-    let (updated1, old1) = try! updateObjectPath(arr, "0", 5)
-    let (updated2, old2) = try! updateObjectPath(arr, "1", 6)
-    let (updated3, old3) = try! updateObjectPath(arr, "2", 7)
-    let (updated4, old4) = try! updateObjectPath(arr, "5", 1)
+    let (updated1, old1) = try updateObjectPath(arr, "0", 5)
+    let (updated2, old2) = try updateObjectPath(arr, "1", 6)
+    let (updated3, old3) = try updateObjectPath(arr, "2", 7)
+    let (updated4, old4) = try updateObjectPath(arr, "5", 1)
     
     /// Then
     XCTAssertEqual(accessObjectPath(arr, "0") as? Int, 1)

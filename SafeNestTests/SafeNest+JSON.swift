@@ -10,7 +10,7 @@ import XCTest
 @testable import SafeNest
 
 public final class JSONTests: XCTestCase {
-  public func test_settingJSONObject() {
+  public func test_settingJSONObject() throws {
     /// Setup
     let _: [String : Any] = [
       "by" : "dhouston",

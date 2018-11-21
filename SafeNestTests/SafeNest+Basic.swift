@@ -36,7 +36,7 @@ public final class BasicTests: XCTestCase {
     XCTAssertEqual(safeNest.value(at: "a1.b1.c2.d3.0").cast(Int.self).value, 1)
   }
   
-  public func test_updateNestedProps() {
+  public func test_updateNestedProps() throws {
     /// Setup
     var safeNest = self.safeNest!
     let path1 = "a1.b2.c3.d1.e1"
@@ -50,10 +50,10 @@ public final class BasicTests: XCTestCase {
     let value4 = ["z10": 200]
     
     /// When
-    let old1 = try! safeNest.update(at: path1, value: value1)
-    let old2 = try! safeNest.update(at: path2, value: value2)
+    let old1 = try safeNest.update(at: path1, value: value1)
+    let old2 = try safeNest.update(at: path2, value: value2)
     
-    safeNest = try! safeNest
+    safeNest = try safeNest
       .updating(at: path3, value: value3)
       .updating(at: path4, value: value4)
       .mapping(at: path5, withMapper: {"\($0!)"})
@@ -68,7 +68,7 @@ public final class BasicTests: XCTestCase {
     XCTAssertEqual(safeNest.value(at: path5).value as? String, "2")
   }
   
-  public func test_copyAndMoveNestedProps() {
+  public func test_copyAndMoveNestedProps() throws {
     /// Setup
     var safeNest = self.safeNest!
     let path1 = "a1.b1.c2.d3.2"
@@ -77,15 +77,15 @@ public final class BasicTests: XCTestCase {
     let path4 = "a1.b2.c2"
     
     /// When
-    let old12 = try! safeNest.copy(from: path1, to: path2)
-    let old34 = try! safeNest.move(from: path3, to: path4)
+    let old12 = try safeNest.copy(from: path1, to: path2)
+    let old34 = try safeNest.move(from: path3, to: path4)
     
     /// Then
     XCTAssertNil(old12)
     XCTAssertEqual(old34 as? Int, 10)
     
-    XCTAssertEqual(safeNest.value(at: path1).value as! Int,
-                   safeNest.value(at: path2).value as! Int)
+    XCTAssertEqual(try safeNest.value(at: path1).cast(Int.self).getOrThrow(),
+                   try safeNest.value(at: path2).cast(Int.self).getOrThrow())
     
     XCTAssertNil(safeNest.value(at: path3).value)
     XCTAssertEqual(safeNest.value(at: path4).value as? Int, 100)

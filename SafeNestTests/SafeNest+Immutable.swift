@@ -10,15 +10,15 @@ import XCTest
 @testable import SafeNest
 
 public final class ImmutableTests: XCTestCase {
-  public func test_ensuringImmutability() {
+  public func test_ensuringImmutability() throws {
     /// Setup
     let array = NSArray(arrayLiteral: 1, 2, 3)
     let dict = NSDictionary(dictionaryLiteral: ("a", 1), ("b", array))
     var nest = SafeNest(initialObject: dict)
     
     /// When
-    _ = try! nest.update(at: "a", value: 10)
-    _ = try! nest.update(at: "b.10", value: 20)
+    _ = try nest.update(at: "a", value: 10)
+    _ = try nest.update(at: "b.10", value: 20)
     
     /// Then
     XCTAssertEqual(nest.value(at: "a").value as? Int, 10)
