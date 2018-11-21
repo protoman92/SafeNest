@@ -65,8 +65,8 @@ public final class JSONTests: XCTestCase {
     ) {(data, _, err) in
       /// Then
       var nest = try! SafeNest().with(json: data!)
-      _ = try! nest.update(value: 9999, at: "kids.0")
-      _ = try! nest.update(value: 101, at: "descendants")
+      _ = try! nest.update(at: "kids.0", value: 9999)
+      _ = try! nest.update(at: "descendants", value: 101)
       XCTAssertEqual(nest.value(at: "kids.0").value as? Int, 9999)
       XCTAssertEqual(nest.value(at: "descendants").value as? Int, 101)
       expect.fulfill()

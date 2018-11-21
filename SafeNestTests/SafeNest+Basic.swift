@@ -50,13 +50,13 @@ public final class BasicTests: XCTestCase {
     let value4 = ["z10": 200]
     
     /// When
-    let old1 = try! safeNest.update(value: value1, at: path1)
-    let old2 = try! safeNest.update(value: value2, at: path2)
+    let old1 = try! safeNest.update(at: path1, value: value1)
+    let old2 = try! safeNest.update(at: path2, value: value2)
     
     safeNest = try! safeNest
-      .updating(value: value3, at: path3)
-      .updating(value: value4, at: path4)
-      .mapping(withMapper: {"\($0!)"}, at: path5)
+      .updating(at: path3, value: value3)
+      .updating(at: path4, value: value4)
+      .mapping(at: path5, withMapper: {"\($0!)"})
     
     /// Then
     XCTAssertNil(old1)
