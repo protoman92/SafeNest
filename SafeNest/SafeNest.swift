@@ -6,8 +6,6 @@
 //  Copyright © 2018 swiften. All rights reserved.
 //
 
-import SwiftFP
-
 /// This data type attempts to provide a JSON-like structure by allowing
 /// dynamic data to be stored and accessed. We can feed different types of
 /// objects (e.g. dicts and arrays) and access nested properties with a string

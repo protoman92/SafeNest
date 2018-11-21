@@ -6,8 +6,6 @@
 //  Copyright © 2018 swiften. All rights reserved.
 //
 
-import SwiftFP
-
 public extension SafeNest {
 
   /// Maps a value at a node internally. This method mutates.

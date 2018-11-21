@@ -6,8 +6,6 @@
 //  Copyright © 2018 swiften. All rights reserved.
 //
 
-import SwiftFP
-
 public enum SafeNestError: Error, LocalizedError {
   case unsupportedType(obj: Any, path: String)
   

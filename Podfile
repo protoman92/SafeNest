@@ -6,7 +6,7 @@ target 'SafeNest' do
   # use_frameworks!
 
   # Pods for SafeNest
-  pod 'SwiftFP'
+  pod 'SwiftFP/Main', git: 'https://github.com/protoman92/SwiftFP.git'
 
   target 'SafeNestTests' do
     inherit! :search_paths
