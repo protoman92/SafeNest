@@ -16,11 +16,14 @@ public final class UtilTests: XCTestCase {
     
     /// When
     let (updated1, old1) = try updateObjectPath(dict, "1", 3)
+    let (updated2, old2) = try updateObjectPath(dict, "", 10)
     
     /// Then
     XCTAssertEqual(accessObjectPath(dict, "1") as? Int, 2)
     XCTAssertEqual(updated1 as? [String : Int], ["1" : 3])
+    XCTAssertEqual(updated2 as? Int, 10)
     XCTAssertEqual(old1 as? Int, 2)
+    XCTAssertEqual(old2 as? [String : Int], dict)
   }
   
   public func test_accessAndUpdateArray() throws {
@@ -32,6 +35,7 @@ public final class UtilTests: XCTestCase {
     let (updated2, old2) = try updateObjectPath(arr, "1", 6)
     let (updated3, old3) = try updateObjectPath(arr, "2", 7)
     let (updated4, old4) = try updateObjectPath(arr, "5", 1)
+    let (updated5, old5) = try updateObjectPath(arr, "", 10)
     
     /// Then
     XCTAssertEqual(accessObjectPath(arr, "0") as? Int, 1)
@@ -41,10 +45,12 @@ public final class UtilTests: XCTestCase {
     XCTAssertEqual(updated2 as? [Int], [1, 6, 3])
     XCTAssertEqual(updated3 as? [Int], [1, 2, 7])
     XCTAssertEqual(updated4 as? [Int?], [1, 2, 3, nil, nil, 1])
+    XCTAssertEqual(updated5 as? Int, 10)
     XCTAssertEqual(old1 as? Int, 1)
     XCTAssertEqual(old2 as? Int, 2)
     XCTAssertEqual(old3 as? Int, 3)
     XCTAssertEqual(old4 as? Int, nil)
+    XCTAssertEqual(old5 as? [Int], arr)
     XCTAssertThrowsError(try updateObjectPath(arr, "-1", 1)) {XCTAssertTrue($0 is SafeNestError)}
   }
 }

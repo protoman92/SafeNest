@@ -10,9 +10,21 @@ import XCTest
 @testable import SafeNest
 
 public final class JSONTests: XCTestCase {
+  public struct Data: Encodable & Decodable {
+    public let by: String
+    public let descendants: Int
+    public let id: Int
+    public let kids: [Int]
+    public let score: Int
+    public let time: Double
+    public let title: String
+    public let type: String
+    public let url: String
+  }
+  
   public func test_settingJSONObject() throws {
     /// Setup
-    let _: [String : Any] = [
+    let json: [String : Any] = [
       "by" : "dhouston",
       "descendants" : 71,
       "id" : 8863,
@@ -65,10 +77,13 @@ public final class JSONTests: XCTestCase {
     ) {(data, _, err) in
       /// Then
       var nest = try! SafeNest().with(json: data!)
+      let dataDecoded = nest.decode(at: "", ofType: Data.self).value!
       _ = try! nest.update(at: "kids.0", value: 9999)
       _ = try! nest.update(at: "descendants", value: 101)
       XCTAssertEqual(nest.value(at: "kids.0").value as? Int, 9999)
       XCTAssertEqual(nest.value(at: "descendants").value as? Int, 101)
+      XCTAssertEqual(dataDecoded.by, json["by"] as? String)
+      XCTAssertEqual(dataDecoded.kids, json["kids"] as? [Int])
       expect.fulfill()
     }
     

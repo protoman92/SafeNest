@@ -40,25 +40,28 @@ public extension SafeNest {
   /// Public method for mapping. Here we split the node path into components
   /// and feed them to an internal mapping method.
   ///
+  /// If the node path is an empty string, modify the whole object.
+  ///
   /// - Parameters:
   ///   - node: The path at which to map.
   ///   - fn: The mapper function.
   /// - Returns: The old value found at the specified node.
   /// - Throws: If mapping fails.
-  public mutating func map(at node: String,
+  public mutating func map(at node: String = "",
                            withMapper fn: (Any?) throws -> Any?) throws -> Any? {
     let nodeComponents = node.components(separatedBy: self.pathSeparator)
     return try self._map(nodeComponents, fn)
   }
   
-  /// This method maps, but does not mutate because it returns a new nest.
+  /// This method maps, but does not mutate because it returns a new nest. If
+  /// the node path is an empty string, modify the whole object.
   ///
   /// - Parameters:
   ///   - node: The path at which to map.
   ///   - fn: The mapper function.
   /// - Returns: A new nest.
   /// - Throws: If mapping fails.
-  public func mapping(at node: String,
+  public func mapping(at node: String = "",
                       withMapper fn: (Any?) throws -> Any?) throws -> SafeNest {
     var clonedNest = self.cloned()
     _ = try clonedNest.map(at: node, withMapper: fn)
@@ -70,23 +73,26 @@ public extension SafeNest {
 
   /// Instead of mapping a value, simply replaces it. This method mutates.
   ///
+  /// If the node path is an empty string, modify the whole object.
+  ///
   /// - Parameters:
   ///   - node: The path at which to update.
   ///   - value: The value to update.
   /// - Returns: The old value found at specified node.
   /// - Throws: If updating fails.
-  public mutating func update(at node: String, value: Any?) throws -> Any? {
+  public mutating func update(at node: String = "", value: Any?) throws -> Any? {
     return try self.map(at: node, withMapper: {_ in value})
   }
   
-  /// Updates but does not mutate, instead returns a new nest.
+  /// Updates but does not mutate, instead returns a new nest. If the node path
+  /// is an empty string, modify the whole object.
   ///
   /// - Parameters:
   ///   - node: The path at which to update.
   ///   - value: The value to update.
   /// - Returns: A new nest.
   /// - Throws: If updating fails.
-  public func updating(at node: String, value: Any?) throws -> SafeNest {
+  public func updating(at node: String = "", value: Any?) throws -> SafeNest {
     return try self.mapping(at: node, withMapper: {_ in value})
   }
 }
