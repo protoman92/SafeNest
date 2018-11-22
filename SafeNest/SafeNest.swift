@@ -21,10 +21,11 @@
 /// For now, only several data types are supported, namely dicts and arrays.
 /// This should suffice for most situations, however.
 public struct SafeNest {
-  private var _object: Any
+  private var _object: Any?
   private var _pathSeparator: String
+  let _jsonDecoder: JSONDecoder
   
-  public var object: Any {
+  public var object: Any? {
     return self._object
   }
   
@@ -32,12 +33,13 @@ public struct SafeNest {
     return self._pathSeparator
   }
   
-  public init(initialObject: Any = [:]) {
+  public init(initialObject: Any? = [:]) {
     self._object = initialObject
     self._pathSeparator = "."
+    self._jsonDecoder = JSONDecoder()
   }
   
-  mutating func set(object: Any) {
+  mutating func set(object: Any?) {
     self._object = object
   }
   

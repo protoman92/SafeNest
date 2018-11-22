@@ -16,16 +16,21 @@ public extension SafeNest {
   /// - Returns: A Try instance containing either the value or an access error.
   public func value(at node: String) -> Try<Any> {
     let subpaths = node.components(separatedBy: self.pathSeparator)
-    var currentResult: Any = self.object
+    var currentResult: Any? = self.object
     
     for subpath in subpaths {
-      guard let interResult = accessObjectPath(currentResult, subpath) else {
-        return Try.failure("No value found at \(node)")
+      if let interResult = accessObjectPath(currentResult, subpath) {
+        currentResult = interResult
+      } else {
+        currentResult = nil
+        break
       }
-      
-      currentResult = interResult
     }
     
-    return Try(currentResult)
+    if let currentResult = currentResult {
+      return Try.success(currentResult)
+    }
+    
+    return Try.failure("No value found at \(node)")
   }
 }
