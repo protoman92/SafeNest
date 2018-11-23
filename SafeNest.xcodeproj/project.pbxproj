@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1CCB0E1CA1146D804E917796 /* libPods-SafeNestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 668F277185D5C03F0AC2B684 /* libPods-SafeNestTests.a */; };
+		35E928A06EFB1C226411071F /* libPods-SafeNestDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA928D32DDC02EF9F6EB507 /* libPods-SafeNestDemo.a */; };
 		A313A6E2386BF69872E49AE4 /* libPods-SafeNest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52557BD1B5266969BFB50067 /* libPods-SafeNest.a */; };
 		D30CFC2521A87D8300F9136A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D30CFC2421A87D8200F9136A /* README.md */; };
+		D30CFC4321A8827800F9136A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CFC4221A8827800F9136A /* AppDelegate.swift */; };
+		D30CFC4521A8827800F9136A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CFC4421A8827800F9136A /* ViewController.swift */; };
+		D30CFC4821A8827800F9136A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30CFC4621A8827800F9136A /* Main.storyboard */; };
+		D30CFC4A21A8827A00F9136A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30CFC4921A8827A00F9136A /* Assets.xcassets */; };
+		D30CFC4D21A8827A00F9136A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30CFC4B21A8827A00F9136A /* LaunchScreen.storyboard */; };
 		D3160BB221A47028006A12F3 /* SafeNest+Stress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3160BB121A47028006A12F3 /* SafeNest+Stress.swift */; };
 		D319EE1821A2FFA000C3F79F /* SafeNest+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */; };
 		D319EE1A21A303A400C3F79F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1921A303A400C3F79F /* Utils.swift */; };
@@ -34,13 +40,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21C1356FBBBCCD46B5E6F4E9 /* Pods-SafeNestDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNestDemo.debug.xcconfig"; path = "Target Support Files/Pods-SafeNestDemo/Pods-SafeNestDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		292BAD65CBFB1504075C3080 /* Pods-SafeNest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNest.release.xcconfig"; path = "Target Support Files/Pods-SafeNest/Pods-SafeNest.release.xcconfig"; sourceTree = "<group>"; };
 		3279DA43CBA74097A5CB77A9 /* Pods-SafeNestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNestTests.debug.xcconfig"; path = "Target Support Files/Pods-SafeNestTests/Pods-SafeNestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		52557BD1B5266969BFB50067 /* libPods-SafeNest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeNest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		668F277185D5C03F0AC2B684 /* libPods-SafeNestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeNestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87889BA8568D5576EBF20A76 /* Pods-SafeNest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNest.debug.xcconfig"; path = "Target Support Files/Pods-SafeNest/Pods-SafeNest.debug.xcconfig"; sourceTree = "<group>"; };
 		8FF835CB1A8E191685002019 /* Pods-SafeNestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNestTests.release.xcconfig"; path = "Target Support Files/Pods-SafeNestTests/Pods-SafeNestTests.release.xcconfig"; sourceTree = "<group>"; };
+		9B46A7D85F73900E176B5028 /* Pods-SafeNestDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNestDemo.release.xcconfig"; path = "Target Support Files/Pods-SafeNestDemo/Pods-SafeNestDemo.release.xcconfig"; sourceTree = "<group>"; };
 		D30CFC2421A87D8200F9136A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D30CFC4021A8827700F9136A /* SafeNestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeNestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D30CFC4221A8827800F9136A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D30CFC4421A8827800F9136A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D30CFC4721A8827800F9136A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D30CFC4921A8827A00F9136A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D30CFC4C21A8827A00F9136A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D30CFC4E21A8827A00F9136A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3160BB121A47028006A12F3 /* SafeNest+Stress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+Stress.swift"; sourceTree = "<group>"; };
 		D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+Modify.swift"; sourceTree = "<group>"; };
 		D319EE1921A303A400C3F79F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -55,9 +70,18 @@
 		D3576EF921A2E0970066898F /* SafeNest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeNest.swift; sourceTree = "<group>"; };
 		D3576EFA21A2E0970066898F /* SafeNest+Access.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SafeNest+Access.swift"; sourceTree = "<group>"; };
 		D3576EFD21A2E0BB0066898F /* SafeNest+Basic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SafeNest+Basic.swift"; sourceTree = "<group>"; };
+		FFA928D32DDC02EF9F6EB507 /* libPods-SafeNestDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeNestDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D30CFC3D21A8827700F9136A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35E928A06EFB1C226411071F /* libPods-SafeNestDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3576EDC21A2DFD70066898F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,6 +107,7 @@
 			children = (
 				52557BD1B5266969BFB50067 /* libPods-SafeNest.a */,
 				668F277185D5C03F0AC2B684 /* libPods-SafeNestTests.a */,
+				FFA928D32DDC02EF9F6EB507 /* libPods-SafeNestDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -94,8 +119,23 @@
 				292BAD65CBFB1504075C3080 /* Pods-SafeNest.release.xcconfig */,
 				3279DA43CBA74097A5CB77A9 /* Pods-SafeNestTests.debug.xcconfig */,
 				8FF835CB1A8E191685002019 /* Pods-SafeNestTests.release.xcconfig */,
+				21C1356FBBBCCD46B5E6F4E9 /* Pods-SafeNestDemo.debug.xcconfig */,
+				9B46A7D85F73900E176B5028 /* Pods-SafeNestDemo.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D30CFC4121A8827800F9136A /* SafeNestDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D30CFC4221A8827800F9136A /* AppDelegate.swift */,
+				D30CFC4421A8827800F9136A /* ViewController.swift */,
+				D30CFC4621A8827800F9136A /* Main.storyboard */,
+				D30CFC4921A8827A00F9136A /* Assets.xcassets */,
+				D30CFC4B21A8827A00F9136A /* LaunchScreen.storyboard */,
+				D30CFC4E21A8827A00F9136A /* Info.plist */,
+			);
+			path = SafeNestDemo;
 			sourceTree = "<group>";
 		};
 		D3576ED521A2DFD70066898F = {
@@ -104,6 +144,7 @@
 				D30CFC2421A87D8200F9136A /* README.md */,
 				D3576EE121A2DFD70066898F /* SafeNest */,
 				D3576EEC21A2DFD70066898F /* SafeNestTests */,
+				D30CFC4121A8827800F9136A /* SafeNestDemo */,
 				D3576EE021A2DFD70066898F /* Products */,
 				449BD7FD96FD9770FD5D2ED4 /* Pods */,
 				2DBB4396D7557517FD8D3AF2 /* Frameworks */,
@@ -115,6 +156,7 @@
 			children = (
 				D3576EDF21A2DFD70066898F /* SafeNest.framework */,
 				D3576EE821A2DFD70066898F /* SafeNestTests.xctest */,
+				D30CFC4021A8827700F9136A /* SafeNestDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +201,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		D30CFC3F21A8827700F9136A /* SafeNestDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D30CFC4F21A8827A00F9136A /* Build configuration list for PBXNativeTarget "SafeNestDemo" */;
+			buildPhases = (
+				D3DFAE622FCAEB9C3328AE65 /* [CP] Check Pods Manifest.lock */,
+				D30CFC3C21A8827700F9136A /* Sources */,
+				D30CFC3D21A8827700F9136A /* Frameworks */,
+				D30CFC3E21A8827700F9136A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SafeNestDemo;
+			productName = SafeNestDemo;
+			productReference = D30CFC4021A8827700F9136A /* SafeNestDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D3576EDE21A2DFD70066898F /* SafeNest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3576EF321A2DFD70066898F /* Build configuration list for PBXNativeTarget "SafeNest" */;
@@ -207,6 +267,9 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = swiften;
 				TargetAttributes = {
+					D30CFC3F21A8827700F9136A = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					D3576EDE21A2DFD70066898F = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
@@ -223,6 +286,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = D3576ED521A2DFD70066898F;
 			productRefGroup = D3576EE021A2DFD70066898F /* Products */;
@@ -231,11 +295,22 @@
 			targets = (
 				D3576EDE21A2DFD70066898F /* SafeNest */,
 				D3576EE721A2DFD70066898F /* SafeNestTests */,
+				D30CFC3F21A8827700F9136A /* SafeNestDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D30CFC3E21A8827700F9136A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D30CFC4D21A8827A00F9136A /* LaunchScreen.storyboard in Resources */,
+				D30CFC4A21A8827A00F9136A /* Assets.xcassets in Resources */,
+				D30CFC4821A8827800F9136A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3576EDD21A2DFD70066898F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,9 +373,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D3DFAE622FCAEB9C3328AE65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SafeNestDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D30CFC3C21A8827700F9136A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D30CFC4521A8827800F9136A /* ViewController.swift in Sources */,
+				D30CFC4321A8827800F9136A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3576EDB21A2DFD70066898F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,7 +440,66 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		D30CFC4621A8827800F9136A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D30CFC4721A8827800F9136A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D30CFC4B21A8827A00F9136A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D30CFC4C21A8827A00F9136A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		D30CFC5021A8827A00F9136A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21C1356FBBBCCD46B5E6F4E9 /* Pods-SafeNestDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MHY2SWZ976;
+				INFOPLIST_FILE = SafeNestDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.swiften.SafeNestDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D30CFC5121A8827A00F9136A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B46A7D85F73900E176B5028 /* Pods-SafeNestDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MHY2SWZ976;
+				INFOPLIST_FILE = SafeNestDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.swiften.SafeNestDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D3576EF121A2DFD70066898F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -395,6 +560,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -453,6 +619,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -485,7 +652,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -515,7 +682,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.swiften.SafeNest;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -568,6 +735,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D30CFC4F21A8827A00F9136A /* Build configuration list for PBXNativeTarget "SafeNestDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D30CFC5021A8827A00F9136A /* Debug */,
+				D30CFC5121A8827A00F9136A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D3576ED921A2DFD70066898F /* Build configuration list for PBXProject "SafeNest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

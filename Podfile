@@ -13,4 +13,10 @@ target 'SafeNest' do
     # Pods for testing
   end
 
+  target 'SafeNestDemo' do
+    inherit! :search_paths
+    use_modular_headers!
+    pod 'HMReactiveRedux/Main+Rx', git: 'https://github.com/protoman92/HMReactiveRedux-Swift'
+  end
+  
 end
