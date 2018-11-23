@@ -12,7 +12,7 @@ To use this nest:
 ```swift
 import SafeNest
 
-let nest = SafeNest()
+let nest = SafeNest.builder().build()
 ```
 
 To access the value at any node, use:
@@ -27,6 +27,7 @@ The parameter of this function should be a String whose components are joined wi
 nest.value(at: "a.b.c.d.e")                     // Returns type Try<Any>
 nest.value(at: "a.b.c.d.e").cast(Int.self)      // Returns type Try<Int>
 nest.value(at: "a.b.c.d.e").cast(String.self)   // Returns type Try<String>
+nest.decode<D>(at: "a.b.c.d.e, ofType: D)       // Returns type Try<D>, where D: Decodable
 ```
 
 In order to update the value at some node, call:
@@ -34,9 +35,12 @@ In order to update the value at some node, call:
 ```swift
 try nest.update(at: String, value: Any)         // This method mutates
 try nest.updating(at: String, value: Any)       // This method returns a new nest.
+try nest.encode(at: String, value: Encodable)   // This method encodes an object and deposit at a node.
 ```
 
 The nest will update the value at that node, and if necessary create new dictionaries along the way.
+
+Please note that currently only [String : Any] dict and [Any] array are supported. Generally this should be fine, considering the types of payload that could arrive from a backend server.
 
 ## Usage with Redux
 

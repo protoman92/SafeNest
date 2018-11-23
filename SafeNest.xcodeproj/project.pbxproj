@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1CCB0E1CA1146D804E917796 /* libPods-SafeNestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 668F277185D5C03F0AC2B684 /* libPods-SafeNestTests.a */; };
 		A313A6E2386BF69872E49AE4 /* libPods-SafeNest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52557BD1B5266969BFB50067 /* libPods-SafeNest.a */; };
+		D30CFC2521A87D8300F9136A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D30CFC2421A87D8200F9136A /* README.md */; };
 		D3160BB221A47028006A12F3 /* SafeNest+Stress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3160BB121A47028006A12F3 /* SafeNest+Stress.swift */; };
 		D319EE1821A2FFA000C3F79F /* SafeNest+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */; };
 		D319EE1A21A303A400C3F79F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1921A303A400C3F79F /* Utils.swift */; };
@@ -39,6 +40,7 @@
 		668F277185D5C03F0AC2B684 /* libPods-SafeNestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeNestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87889BA8568D5576EBF20A76 /* Pods-SafeNest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNest.debug.xcconfig"; path = "Target Support Files/Pods-SafeNest/Pods-SafeNest.debug.xcconfig"; sourceTree = "<group>"; };
 		8FF835CB1A8E191685002019 /* Pods-SafeNestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeNestTests.release.xcconfig"; path = "Target Support Files/Pods-SafeNestTests/Pods-SafeNestTests.release.xcconfig"; sourceTree = "<group>"; };
+		D30CFC2421A87D8200F9136A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D3160BB121A47028006A12F3 /* SafeNest+Stress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+Stress.swift"; sourceTree = "<group>"; };
 		D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+Modify.swift"; sourceTree = "<group>"; };
 		D319EE1921A303A400C3F79F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		D3576ED521A2DFD70066898F = {
 			isa = PBXGroup;
 			children = (
+				D30CFC2421A87D8200F9136A /* README.md */,
 				D3576EE121A2DFD70066898F /* SafeNest */,
 				D3576EEC21A2DFD70066898F /* SafeNestTests */,
 				D3576EE021A2DFD70066898F /* Products */,
@@ -237,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D30CFC2521A87D8300F9136A /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
