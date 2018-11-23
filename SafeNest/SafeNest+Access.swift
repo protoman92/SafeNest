@@ -47,6 +47,6 @@ public extension SafeNest {
   public func decode<D>(at node: String, ofType type: D.Type) -> Try<D> where D: Decodable {
     return self.value(at: node)
       .map({try JSONSerialization.data(withJSONObject: $0, options: .prettyPrinted)})
-      .map({try self._jsonDecoder.decode(type, from: $0)})
+      .map({try self.jsonDecoder.decode(type, from: $0)})
   }
 }

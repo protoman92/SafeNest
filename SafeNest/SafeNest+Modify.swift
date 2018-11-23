@@ -22,15 +22,15 @@ public extension SafeNest {
     if let subpath0 = subpaths.first {
       if subpaths.count == 1 {
         let (updated, old) = try mapObjectPath(self.object, subpath0, mapper)
-        self.set(object: updated)
+        self.setUnsafely(updated)
         oldValue = old
       } else if subpaths.count > 1 {
         let object0 = accessObjectPath(self.object, subpath0) ?? [String : Any]()
-        var subNest = self.cloned()
-        subNest.set(object: object0)
+        var subNest = self.clone()
+        subNest.setUnsafely(object0)
         oldValue = try subNest._map(Array(subpaths[1...]), mapper)
         let (updated, _) = try updateObjectPath(self.object, subpath0, subNest.object)
-        self.set(object: updated)
+        self.setUnsafely(updated)
       }
     }
     
@@ -63,7 +63,7 @@ public extension SafeNest {
   /// - Throws: If mapping fails.
   public func mapping(at node: String = "",
                       withMapper fn: (Any?) throws -> Any?) throws -> SafeNest {
-    var clonedNest = self.cloned()
+    var clonedNest = self.clone()
     _ = try clonedNest.map(at: node, withMapper: fn)
     return clonedNest
   }
@@ -109,7 +109,7 @@ public extension SafeNest {
   public mutating func encode<E>(at node: String = "", value: E) throws
     -> Any? where E: Encodable
   {
-    let encoded = try self._jsonEncoder.encode(value)
+    let encoded = try self.jsonEncoder.encode(value)
     let json = try JSONSerialization.jsonObject(with: encoded, options: .allowFragments)
     return try self.update(at: node, value: json)
   }
@@ -124,7 +124,7 @@ public extension SafeNest {
   public func encoding<E>(at node: String = "", value: E) throws
     -> SafeNest where E: Encodable
   {
-    var clonedNest = self.cloned()
+    var clonedNest = self.clone()
     _ = try clonedNest.encode(at: node, value: value)
     return clonedNest
   }
@@ -152,7 +152,7 @@ public extension SafeNest {
   /// - Returns: A new nest.
   /// - Throws: If copying fails.
   public func copying(from node1: String, to node2: String) throws -> SafeNest {
-    var clonedNest = self.cloned()
+    var clonedNest = self.clone()
     _ = try clonedNest.copy(from: node1, to: node2)
     return clonedNest
   }
@@ -181,7 +181,7 @@ public extension SafeNest {
   /// - Returns: A new nest.
   /// - Throws: If moving fails.
   public func moving(from node1: String, to node2: String) throws -> SafeNest {
-    var clonedNest = self.cloned()
+    var clonedNest = self.clone()
     _ = try clonedNest.move(from: node1, to: node2)
     return clonedNest
   }

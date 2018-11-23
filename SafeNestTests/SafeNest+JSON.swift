@@ -76,7 +76,7 @@ public final class JSONTests: XCTestCase {
       URL(string: "https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty")!
     ) {(data, _, err) in
       /// Then
-      var nest = try! SafeNest().with(json: data!)
+      var nest = try! SafeNest.builder().with(json: data!).build()
       let dataDecoded = nest.decode(at: "", ofType: Data.self).value!
       _ = try! nest.encode(value: dataDecoded)
       _ = try! nest.update(at: "kids.0", value: 9999)

@@ -77,7 +77,7 @@ public final class StressTests: XCTestCase {
   }
   
   func createSafeNest(_ combinations: [String : Any]) throws -> SafeNest {
-    var nest = SafeNest().with(pathSeparator: separator)
+    var nest = SafeNest.builder().with(pathSeparator: separator).build()
     try combinations.forEach({_ = try nest.update(at: $0, value: $1)})
     return nest;
   }

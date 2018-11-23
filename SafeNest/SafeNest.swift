@@ -21,10 +21,14 @@
 /// For now, only several data types are supported, namely dicts and arrays.
 /// This should suffice for most situations, however.
 public struct SafeNest {
+  public static func builder() -> Builder {
+    return Builder()
+  }
+  
   private var _object: Any?
   private var _pathSeparator: String
-  let _jsonEncoder: JSONEncoder
-  let _jsonDecoder: JSONDecoder
+  private var _jsonEncoder: JSONEncoder
+  private var _jsonDecoder: JSONDecoder
   
   public var object: Any? {
     return self._object
@@ -34,41 +38,72 @@ public struct SafeNest {
     return self._pathSeparator
   }
   
-  public init(initialObject: Any? = [:]) {
-    self._object = initialObject
+  public var jsonEncoder: JSONEncoder {
+    return self._jsonEncoder
+  }
+  
+  public var jsonDecoder: JSONDecoder {
+    return self._jsonDecoder
+  }
+  
+  private init() {
+    self._object = [String : Any]()
     self._pathSeparator = "."
     self._jsonEncoder = JSONEncoder()
     self._jsonDecoder = JSONDecoder()
   }
   
-  mutating func set(object: Any?) {
+  public func cloneBuilder() -> Builder {
+    return SafeNest.builder().with(nest: self)
+  }
+  
+  public func clone() -> SafeNest {
+    return self
+  }
+  
+  mutating func setUnsafely(_ object: Any?) {
     self._object = object
   }
   
-  mutating func set(pathSeparator: String) {
-    self._pathSeparator = pathSeparator
-  }
-  
-  public func cloned() -> SafeNest {
-    var newNest = SafeNest(initialObject: self._object)
-    newNest.set(pathSeparator: self._pathSeparator)
-    return newNest
-  }
-  
-  public func with(object: Any) -> SafeNest {
-    var clonedNest = self.cloned()
-    clonedNest.set(object: object)
-    return clonedNest
-  }
-  
-  public func with(json: Data) throws -> SafeNest {
-    let object = try JSONSerialization.jsonObject(with: json, options: .allowFragments)
-    return self.with(object: object)
-  }
-  
-  public func with(pathSeparator: String) -> SafeNest {
-    var clonedNest = self.cloned()
-    clonedNest.set(pathSeparator: pathSeparator)
-    return clonedNest
+  public final class Builder {
+    private var nest: SafeNest
+    
+    fileprivate init() {
+      self.nest = SafeNest()
+    }
+    
+    public func with(initialObject: Any?) -> Self {
+      self.nest._object = initialObject
+      return self
+    }
+    
+    public func with(json: Data) throws -> Self {
+      let object = try JSONSerialization.jsonObject(with: json, options: .allowFragments)
+      return self.with(initialObject: object)
+    }
+    
+    public func with(pathSeparator: String) -> Self {
+      self.nest._pathSeparator = pathSeparator
+      return self
+    }
+    
+    public func with(jsonEncoder: JSONEncoder) -> Self {
+      self.nest._jsonEncoder = jsonEncoder
+      return self
+    }
+    
+    public func with(jsonDecoder: JSONDecoder) -> Self {
+      self.nest._jsonDecoder = jsonDecoder
+      return self
+    }
+    
+    public func with(nest: SafeNest) -> Self {
+      self.nest = nest
+      return self
+    }
+    
+    public func build() -> SafeNest {
+      return self.nest
+    }
   }
 }

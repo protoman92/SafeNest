@@ -15,16 +15,18 @@ public final class BasicTests: XCTestCase {
   override public func setUp() {
     super.setUp()
     
-    self.safeNest = SafeNest(initialObject: [
-      "a1": [
-        "b1": [
-          "c1": ["d1": 1, "d2": 2],
-          "c2": ["d3": [1, 2, 3]]
-        ],
-        "b2": ["c2": 10],
-        "b3": 100
-      ]
-      ])
+    self.safeNest = SafeNest.builder()
+      .with(initialObject: [
+        "a1": [
+          "b1": [
+            "c1": ["d1": 1, "d2": 2],
+            "c2": ["d3": [1, 2, 3]]
+          ],
+          "b2": ["c2": 10],
+          "b3": 100
+        ]
+        ])
+      .build()
   }
   
   public func test_accessNestedProps() {
