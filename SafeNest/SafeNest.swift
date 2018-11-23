@@ -23,6 +23,7 @@
 public struct SafeNest {
   private var _object: Any?
   private var _pathSeparator: String
+  let _jsonEncoder: JSONEncoder
   let _jsonDecoder: JSONDecoder
   
   public var object: Any? {
@@ -36,6 +37,7 @@ public struct SafeNest {
   public init(initialObject: Any? = [:]) {
     self._object = initialObject
     self._pathSeparator = "."
+    self._jsonEncoder = JSONEncoder()
     self._jsonDecoder = JSONDecoder()
   }
   

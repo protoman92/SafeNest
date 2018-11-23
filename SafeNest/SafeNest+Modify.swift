@@ -99,6 +99,39 @@ public extension SafeNest {
 
 public extension SafeNest {
   
+  /// Encode a value and deposit it at a nested node.
+  ///
+  /// - Parameters:
+  ///   - node: The path at which to deposit the value.
+  ///   - value: The encodable object.
+  /// - Returns: The old value found at the specified node.
+  /// - Throws: If updating fails.
+  public mutating func encode<E>(at node: String = "", value: E) throws
+    -> Any? where E: Encodable
+  {
+    let encoded = try self._jsonEncoder.encode(value)
+    let json = try JSONSerialization.jsonObject(with: encoded, options: .allowFragments)
+    return try self.update(at: node, value: json)
+  }
+  
+  /// Encode but does not mutate, instead return a new nest.
+  ///
+  /// - Parameters:
+  ///   - node: The path at which to deposit the value.
+  ///   - value: The encodable object.
+  /// - Returns: A new nest.
+  /// - Throws: If updating fails.
+  public func encoding<E>(at node: String = "", value: E) throws
+    -> SafeNest where E: Encodable
+  {
+    var clonedNest = self.cloned()
+    _ = try clonedNest.encode(at: node, value: value)
+    return clonedNest
+  }
+}
+
+public extension SafeNest {
+  
   /// Copies value from one path to another. This method mutates.
   ///
   /// - Parameters:
