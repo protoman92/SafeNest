@@ -10,14 +10,14 @@ public enum SafeNestError: Error, LocalizedError {
   case unsupportedType(obj: Any?, path: String)
   
   public var errorDescription: String? {
+    return self.localizedDescription
+  }
+  
+  public var localizedDescription: String {
     switch self {
     case .unsupportedType(let obj, let path):
       return "Unsupported data type \(String(describing: obj)) for path \(path)"
     }
-  }
-  
-  public var localizedDescription: String {
-    return self.errorDescription ?? ""
   }
 }
 
@@ -34,9 +34,9 @@ func accessObjectPath(_ object: Any?, _ path: String) -> Any? {
     }
     
     return nil
-  } else {
-    return object
   }
+  
+  return object
 }
 
 func mapObjectPath(_ obj: Any?, _ path: String, _ fn: (Any?) throws -> Any?) throws
@@ -58,9 +58,9 @@ func mapObjectPath(_ obj: Any?, _ path: String, _ fn: (Any?) throws -> Any?) thr
     }
     
     throw SafeNestError.unsupportedType(obj: obj, path: path)
-  } else {
-    return try (fn(obj), obj)
   }
+  
+  return try (fn(obj), obj)
 }
 
 func updateObjectPath(_ obj: Any?, _ path: String, _ value: Any?) throws

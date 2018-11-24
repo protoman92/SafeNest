@@ -10,6 +10,14 @@ import XCTest
 @testable import SafeNest
 
 public final class UtilTests: XCTestCase {
+  public func test_errorMessages() {
+    /// Setup
+    let error1 = SafeNestError.unsupportedType(obj: nil, path: "")
+    
+    /// When && Then
+    XCTAssertNotNil(error1.errorDescription)
+  }
+  
   public func test_accessAndUpdateDict() throws {
     /// Setup
     let dict = ["1" : 2]

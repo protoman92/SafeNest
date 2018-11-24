@@ -9,6 +9,9 @@
 import XCTest
 @testable import SafeNest
 
+public final class CustomJSONEncoder: JSONEncoder {}
+public final class CustomJSONDecoder: JSONDecoder {}
+
 public final class JSONTests: XCTestCase {
   public struct Data: Encodable & Decodable {
     public let by: String
@@ -76,11 +79,16 @@ public final class JSONTests: XCTestCase {
       URL(string: "https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty")!
     ) {(data, _, err) in
       /// Then
-      var nest = try! SafeNest.builder().with(json: data!).build()
+      var nest = try! SafeNest.builder()
+        .with(jsonEncoder: CustomJSONEncoder())
+        .with(jsonDecoder: CustomJSONDecoder())
+        .with(json: data!)
+        .build()
+      
       let dataDecoded = nest.decode(at: "", ofType: Data.self).value!
-      _ = try! nest.encode(value: dataDecoded)
-      _ = try! nest.update(at: "kids.0", value: 9999)
-      _ = try! nest.update(at: "descendants", value: 101)
+      nest = try! nest.encoding(value: dataDecoded)
+      nest = try! nest.updating(at: "kids.0", value: 9999)
+      nest = try! nest.updating(at: "descendants", value: 101)
       XCTAssertEqual(nest.value(at: "kids.0").value as? Int, 9999)
       XCTAssertEqual(nest.value(at: "descendants").value as? Int, 101)
       XCTAssertEqual(dataDecoded.by, json["by"] as? String)
