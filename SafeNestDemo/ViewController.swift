@@ -29,6 +29,11 @@ public final class ViewController: UIViewController {
     }
   }
   
+  override public func viewDidLoad() {
+    super.viewDidLoad()
+    self.navigationItem.title = "Login"
+  }
+  
   private func setupDependency(_ dependency: Dependency) {
     guard
       let firstNameInput = self.firstNameInput,

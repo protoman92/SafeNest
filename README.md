@@ -12,7 +12,14 @@ To use this nest:
 ```swift
 import SafeNest
 
-let nest = SafeNest.builder().build()
+let nest1 = SafeNest.builder().build()
+let nest2 = SafeNest.empty()
+
+let nest3 = SafeNest.empty()
+  .cloneBuilder()
+  .with(initialObject: ["a" : 1])
+  .with(pathSeparator: "$")                     // Now you need to use "a$b$c$d"
+  .build()
 ```
 
 To access the value at any node, use:
@@ -66,4 +73,4 @@ nest.value(at: "a.b.3.d.e")                     // Returns Try.failure("...")
 
 - We can then use these values to drive state changes.
 
-For a more concrete example, please visit <https://github.com/protoman92/HMReactiveRedux-Swift> and play around with the demo.
+For a more concrete example, check out the demo included in this repository, or visit the demo at <https://github.com/protoman92/HMReactiveRedux-Swift>.

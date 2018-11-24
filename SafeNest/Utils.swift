@@ -67,3 +67,4 @@ func updateObjectPath(_ obj: Any?, _ path: String, _ value: Any?) throws
   -> (newObject: Any?, oldValue: Any?) {
   return try mapObjectPath(obj, path, {_ in value})
 }
+

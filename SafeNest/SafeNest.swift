@@ -25,6 +25,10 @@ public struct SafeNest {
     return Builder()
   }
   
+  public static func empty() -> SafeNest {
+    return SafeNest.builder().build()
+  }
+  
   private var _object: Any?
   private var _pathSeparator: String
   private var _jsonEncoder: JSONEncoder

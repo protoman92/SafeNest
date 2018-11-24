@@ -13,7 +13,6 @@
         <!--Navigation Controller-->
         <scene sceneID="pwl-fd-N7S">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w3Y-Nr-HiG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="8cF-bX-Nq1" customClass="NavigationController" customModule="SafeNestDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FTY-x5-XfG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -23,13 +22,14 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="p7d-5M-ADP"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3Y-Nr-HiG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-786" y="98"/>
         </scene>
-        <!--View Controller-->
+        <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SafeNestDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login" id="BYZ-38-t0r" customClass="ViewController" customModule="SafeNestDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

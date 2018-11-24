@@ -29,6 +29,7 @@
 		D3576EFE21A2E0BB0066898F /* SafeNest+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3576EFD21A2E0BB0066898F /* SafeNest+Basic.swift */; };
 		D3818ABF21A9A11A0074D405 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3818ABE21A9A11A0074D405 /* Dependency.swift */; };
 		D3818AC321A9AC9B0074D405 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3818AC221A9AC9B0074D405 /* NavigationController.swift */; };
+		D3818AC421A9C1460074D405 /* SafeNest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3576EDF21A2DFD70066898F /* SafeNest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3818AC421A9C1460074D405 /* SafeNest.framework in Frameworks */,
 				35E928A06EFB1C226411071F /* libPods-SafeNestDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
