@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/protoman92/SafeNest.svg?branch=master)](https://travis-ci.org/protoman92/SafeNest)
+[![Coverage Status](https://coveralls.io/repos/github/protoman92/SafeNest/badge.svg?branch=master)](https://coveralls.io/github/protoman92/SafeNest?branch=master)
 
 Safe nest for all the swifties. The nest provides dynamic, JSON-like storage and exposes methods to access/update nested values.
 
