@@ -17,6 +17,8 @@ target 'SafeNest' do
     inherit! :search_paths
     use_modular_headers!
     pod 'HMReactiveRedux/Main+Rx', git: 'https://github.com/protoman92/HMReactiveRedux-Swift'
+    pod 'RxDataSources'
+    pod 'RxCocoa'
   end
   
 end

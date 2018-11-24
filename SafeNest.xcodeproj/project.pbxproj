@@ -27,6 +27,8 @@
 		D3576EFB21A2E0970066898F /* SafeNest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3576EF921A2E0970066898F /* SafeNest.swift */; };
 		D3576EFC21A2E0970066898F /* SafeNest+Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3576EFA21A2E0970066898F /* SafeNest+Access.swift */; };
 		D3576EFE21A2E0BB0066898F /* SafeNest+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3576EFD21A2E0BB0066898F /* SafeNest+Basic.swift */; };
+		D3818ABF21A9A11A0074D405 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3818ABE21A9A11A0074D405 /* Dependency.swift */; };
+		D3818AC321A9AC9B0074D405 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3818AC221A9AC9B0074D405 /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		D3576EF921A2E0970066898F /* SafeNest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeNest.swift; sourceTree = "<group>"; };
 		D3576EFA21A2E0970066898F /* SafeNest+Access.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SafeNest+Access.swift"; sourceTree = "<group>"; };
 		D3576EFD21A2E0BB0066898F /* SafeNest+Basic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SafeNest+Basic.swift"; sourceTree = "<group>"; };
+		D3818ABE21A9A11A0074D405 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
+		D3818AC221A9AC9B0074D405 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		FFA928D32DDC02EF9F6EB507 /* libPods-SafeNestDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeNestDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,11 +133,13 @@
 			isa = PBXGroup;
 			children = (
 				D30CFC4221A8827800F9136A /* AppDelegate.swift */,
-				D30CFC4421A8827800F9136A /* ViewController.swift */,
-				D30CFC4621A8827800F9136A /* Main.storyboard */,
 				D30CFC4921A8827A00F9136A /* Assets.xcassets */,
-				D30CFC4B21A8827A00F9136A /* LaunchScreen.storyboard */,
+				D3818ABE21A9A11A0074D405 /* Dependency.swift */,
 				D30CFC4E21A8827A00F9136A /* Info.plist */,
+				D30CFC4B21A8827A00F9136A /* LaunchScreen.storyboard */,
+				D30CFC4621A8827800F9136A /* Main.storyboard */,
+				D3818AC221A9AC9B0074D405 /* NavigationController.swift */,
+				D30CFC4421A8827800F9136A /* ViewController.swift */,
 			);
 			path = SafeNestDemo;
 			sourceTree = "<group>";
@@ -402,6 +408,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3818ABF21A9A11A0074D405 /* Dependency.swift in Sources */,
+				D3818AC321A9AC9B0074D405 /* NavigationController.swift in Sources */,
 				D30CFC4521A8827800F9136A /* ViewController.swift in Sources */,
 				D30CFC4321A8827800F9136A /* AppDelegate.swift in Sources */,
 			);
