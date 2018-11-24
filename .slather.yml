@@ -3,3 +3,5 @@ coverage_service: coveralls
 xcodeproj: SafeNest.xcodeproj
 scheme: SafeNest
 workspace: SafeNest.xcworkspace
+ignore:
+  - "Pods/*"
