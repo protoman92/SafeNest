@@ -15,6 +15,9 @@ public final class ViewController: UIViewController {
   @IBOutlet private weak var firstNameInput: UITextField!
   @IBOutlet private weak var lastNameInput: UITextField!
   @IBOutlet private weak var passwordInput: UITextField!
+  @IBOutlet private weak var ageInput: UISlider!
+  @IBOutlet private weak var ageDisplay: UILabel!
+  
   private lazy var disposeBag: DisposeBag = DisposeBag()
   
   public var dependency: Dependency? {
@@ -38,7 +41,9 @@ public final class ViewController: UIViewController {
     guard
       let firstNameInput = self.firstNameInput,
       let lastNameInput = self.lastNameInput,
-      let passwordInput = self.passwordInput
+      let passwordInput = self.passwordInput,
+      let ageInput = self.ageInput,
+      let ageLabel = self.ageDisplay
       else {
         fatalError()
     }
@@ -60,13 +65,24 @@ public final class ViewController: UIViewController {
       .subscribe(passwordInput.rx.text)
       .disposed(by: self.disposeBag)
     
+    stateStream
+      .map({$0.age.map(Float.init) ?? ageInput.minimumValue})
+      .subscribe(ageInput.rx.value)
+      .disposed(by: self.disposeBag)
+    
+    stateStream
+      .map({$0.age.map(String.init)})
+      .subscribe(ageLabel.rx.text)
+      .disposed(by: self.disposeBag)
+    
     Observable
       .combineLatest(
         firstNameInput.rx.text.asObservable(),
         lastNameInput.rx.text.asObservable(),
-        passwordInput.rx.text.asObservable()
+        passwordInput.rx.text.asObservable(),
+        ageInput.rx.value.map({Int.init($0)})
       )
-      .map({State(firstName: $0, lastName: $1, password: $2)})
+      .map({State(firstName: $0, lastName: $1, password: $2, age: $3)})
       .subscribe(dependency.credentialsReceiver)
       .disposed(by: self.disposeBag)
   }
@@ -77,6 +93,7 @@ public extension ViewController {
     public let firstName: String?
     public let lastName: String?
     public let password: String?
+    public let age: Int?
   }
   
   public struct Dependency {

@@ -55,25 +55,52 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="5" maxValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="cFY-Q5-zwz">
+                                <rect key="frame" x="39.5" y="224" width="297.5" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSU-fF-7Gt">
+                                <rect key="frame" x="343" y="239" width="24" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="4Cg-M4-yeR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ans-Yx-80G">
+                                <rect key="frame" x="8" y="230.5" width="25.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7Xc-09-gMl" firstAttribute="trailing" secondItem="7So-N2-O2f" secondAttribute="trailing" id="09o-lO-v58"/>
+                            <constraint firstItem="cFY-Q5-zwz" firstAttribute="top" secondItem="0E6-QP-5V2" secondAttribute="bottom" constant="8" id="0Eh-th-RRQ"/>
+                            <constraint firstItem="DSU-fF-7Gt" firstAttribute="centerY" secondItem="cFY-Q5-zwz" secondAttribute="centerY" id="75b-T3-eCy"/>
                             <constraint firstItem="0E6-QP-5V2" firstAttribute="trailing" secondItem="7Xc-09-gMl" secondAttribute="trailing" id="CfM-RR-zcY"/>
                             <constraint firstItem="0E6-QP-5V2" firstAttribute="top" secondItem="7Xc-09-gMl" secondAttribute="bottom" constant="8" id="ETD-x0-be4"/>
                             <constraint firstItem="7Xc-09-gMl" firstAttribute="top" secondItem="7So-N2-O2f" secondAttribute="bottom" constant="8" id="Jdj-6j-zNL"/>
+                            <constraint firstItem="ans-Yx-80G" firstAttribute="leading" secondItem="0E6-QP-5V2" secondAttribute="leading" id="LbP-pe-gg0"/>
                             <constraint firstItem="7Xc-09-gMl" firstAttribute="leading" secondItem="7So-N2-O2f" secondAttribute="leading" id="SRX-Kz-nhG"/>
                             <constraint firstItem="0E6-QP-5V2" firstAttribute="height" secondItem="7Xc-09-gMl" secondAttribute="height" id="WEW-29-Gmh"/>
                             <constraint firstItem="7So-N2-O2f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="XP7-1Z-oeL"/>
                             <constraint firstAttribute="trailing" secondItem="7So-N2-O2f" secondAttribute="trailing" constant="8" id="aVD-kA-ExP"/>
+                            <constraint firstItem="cFY-Q5-zwz" firstAttribute="leading" secondItem="ans-Yx-80G" secondAttribute="trailing" constant="8" id="kan-g8-xBG"/>
                             <constraint firstItem="0E6-QP-5V2" firstAttribute="leading" secondItem="7Xc-09-gMl" secondAttribute="leading" id="lkb-tf-ysW"/>
                             <constraint firstItem="7So-N2-O2f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="mBD-D4-89M"/>
+                            <constraint firstItem="DSU-fF-7Gt" firstAttribute="trailing" secondItem="0E6-QP-5V2" secondAttribute="trailing" id="mC9-P6-Vv4"/>
                             <constraint firstItem="7Xc-09-gMl" firstAttribute="height" secondItem="7So-N2-O2f" secondAttribute="height" id="mF8-sJ-amD"/>
+                            <constraint firstItem="cFY-Q5-zwz" firstAttribute="centerY" secondItem="ans-Yx-80G" secondAttribute="centerY" id="rZX-2s-Am3"/>
+                            <constraint firstItem="DSU-fF-7Gt" firstAttribute="leading" secondItem="cFY-Q5-zwz" secondAttribute="trailing" constant="8" id="y0g-gj-7KB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="LFw-mn-Yri"/>
                     <connections>
+                        <outlet property="ageDisplay" destination="DSU-fF-7Gt" id="q8e-3p-m7h"/>
+                        <outlet property="ageInput" destination="cFY-Q5-zwz" id="qGY-SA-lDl"/>
                         <outlet property="firstNameInput" destination="7So-N2-O2f" id="Bs7-se-94z"/>
                         <outlet property="lastNameInput" destination="7Xc-09-gMl" id="1Gt-1a-B8B"/>
                         <outlet property="passwordInput" destination="0E6-QP-5V2" id="ovi-zU-AJh"/>
@@ -81,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="50" y="98"/>
+            <point key="canvasLocation" x="48.799999999999997" y="97.601199400299862"/>
         </scene>
     </scenes>
 </document>
