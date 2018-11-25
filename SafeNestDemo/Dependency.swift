@@ -40,7 +40,7 @@ public struct MainDependency {
     if let instance = self._instance {
       return instance
     } else {
-      let store = RxReduxStore.createInstance(SafeNest.empty(), Redux.reduce)
+      let store = RxReduxStore.create(SafeNest.empty(), Redux.reduce)
       let instance = MainDependency(store: store)
       self._instance = instance
       return instance
