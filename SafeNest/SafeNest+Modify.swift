@@ -84,6 +84,18 @@ public extension SafeNest {
     return try self.map(at: node, withMapper: {_ in value})
   }
   
+  /// Update JSON data at a node. This method mutates.
+  ///
+  /// - Parameters:
+  ///   - node: The path at which to update.
+  ///   - jsonData: The JSON data to update.
+  /// - Returns: The old value found at specified node.
+  /// - Throws: If updating fails.
+  public mutating func update(at node: String = "", jsonData: Data) throws -> Any? {
+    let value = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
+    return try self.update(at: node, value: value)
+  }
+  
   /// Updates but does not mutate, instead returns a new nest. If the node path
   /// is an empty string, modify the whole object.
   ///
@@ -94,6 +106,20 @@ public extension SafeNest {
   /// - Throws: If updating fails.
   public func updating(at node: String = "", value: Any?) throws -> SafeNest {
     return try self.mapping(at: node, withMapper: {_ in value})
+  }
+  
+  /// Updates JSON data at a node but does not mutate, instead returns a new
+  /// nest.
+  ///
+  /// - Parameters:
+  ///   - node: The path at which to update.
+  ///   - jsonData: The JSON data to update.
+  /// - Returns: A new nest.
+  /// - Throws: If updating fails.
+  public func updating(at node: String = "", jsonData: Data) throws -> SafeNest {
+    var clonedNest = self.clone()
+    _ = try clonedNest.update(at: node, jsonData: jsonData)
+    return clonedNest
   }
 }
 

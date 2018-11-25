@@ -44,6 +44,7 @@ In order to update the value at some node, call:
 ```swift
 try nest.update(at: String, value: Any)         // This method mutates
 try nest.updating(at: String, value: Any)       // This method returns a new nest.
+try nest.updating(at: String, jsonData: Data)   // This method updates JSON data at a node.
 try nest.encode(at: String, value: Encodable)   // This method encodes an object and deposit at a node.
 ```
 

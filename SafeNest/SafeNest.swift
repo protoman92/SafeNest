@@ -81,11 +81,6 @@ public struct SafeNest {
       return self
     }
     
-    public func with(json: Data) throws -> Self {
-      let object = try JSONSerialization.jsonObject(with: json, options: .allowFragments)
-      return self.with(initialObject: object)
-    }
-    
     public func with(pathSeparator: String) -> Self {
       self.nest._pathSeparator = pathSeparator
       return self

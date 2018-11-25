@@ -82,8 +82,8 @@ public final class JSONTests: XCTestCase {
       var nest = try! SafeNest.builder()
         .with(jsonEncoder: CustomJSONEncoder())
         .with(jsonDecoder: CustomJSONDecoder())
-        .with(json: data!)
         .build()
+        .updating(jsonData: data!)
       
       let dataDecoded = nest.decode(at: "", ofType: Data.self).value!
       nest = try! nest.encoding(value: dataDecoded)
