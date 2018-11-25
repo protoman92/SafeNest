@@ -53,7 +53,7 @@ extension NavigationController.Dependency: ViewControllerDependencyFactory {
         .distinctUntilChanged(),
       credentialsReceiver: self.dependency.store
         .actionTrigger()
-        .mapObserver(Redux.Action.changeLoginCredentials)
+        .mapObserver(Redux.CredentialAction.changeLoginCredentials)
     )
   }
 }

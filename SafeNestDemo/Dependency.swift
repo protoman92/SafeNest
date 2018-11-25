@@ -10,19 +10,25 @@ import SafeNest
 import HMReactiveRedux
 
 public final class Redux {
+  public typealias State = SafeNest
+  public typealias Action = ReduxActionType
   public static let credentialPath = "cred"
   
-  public enum Action: ReduxActionType {
+  public enum CredentialAction: Action {
     case changeLoginCredentials(ViewController.State)
   }
   
-  public static func reduce(state: SafeNest, action: ReduxActionType) -> SafeNest {
-    switch action as? Action {
-    case .some(.changeLoginCredentials(let creds)):
-      return try! state.encoding(at: Redux.credentialPath, value: creds)
-      
-    default:
-      return state
+  public static func reduce(state: State, action: Action) -> State {
+    do {
+      switch action as? CredentialAction {
+      case .some(.changeLoginCredentials(let creds)):
+        return try state.encoding(at: Redux.credentialPath, value: creds)
+        
+      default:
+        return state
+      }
+    } catch (let e) {
+      fatalError(e.localizedDescription)
     }
   }
 }
