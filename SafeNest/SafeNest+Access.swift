@@ -37,6 +37,20 @@ public extension SafeNest {
 }
 
 public extension SafeNest {
+
+  /// Extract an array from a nested node, at which the value is Array
+  /// compatible (e.g. Dictionary/Array).
+  ///
+  /// - Parameters:
+  ///   - node: The path at which to find the value.
+  ///   - ofType: The Array's element type.
+  /// - Returns: A Try instance containing the array.
+  public func array<T>(at node: String, ofType type: T.Type) -> Try<[T]> {
+    return self.value(at: node).map({try extractArray($0, type)})
+  }
+}
+
+public extension SafeNest {
   
   /// Decode a value at a nested node.
   ///

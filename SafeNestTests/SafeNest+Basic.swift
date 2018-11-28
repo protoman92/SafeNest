@@ -33,10 +33,22 @@ public final class BasicTests: XCTestCase {
   public func test_accessNestedProps() {
     /// Setup
     let safeNest = self.safeNest!
+    let path1 = "a1.b1.c1.d1"
+    let path2 = "a1.b1.c2.d3.0"
+    let path3 = "a1.b1.c1"
+    let path4 = "a1.b1.c2.d3"
     
     /// When && Then
-    XCTAssertEqual(safeNest.value(at: "a1.b1.c1.d1").cast(Int.self).value, 1)
-    XCTAssertEqual(safeNest.value(at: "a1.b1.c2.d3.0").cast(Int.self).value, 1)
+    XCTAssertEqual(safeNest.value(at: path1).cast(Int.self).value, 1)
+    XCTAssertEqual(safeNest.value(at: path2).cast(Int.self).value, 1)
+    
+    XCTAssertEqual(safeNest
+      .array(at: path3, ofType: Int.self)
+      .map({$0.sorted()}).value, [1, 2])
+    
+    XCTAssertEqual(safeNest
+      .array(at: path4, ofType: Int.self)
+      .map({$0.sorted()}).value, [1, 2, 3])
   }
   
   public func test_updateNestedProps() throws {

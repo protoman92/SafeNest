@@ -12,10 +12,12 @@ import XCTest
 public final class UtilTests: XCTestCase {
   public func test_errorMessages() {
     /// Setup
-    let error1 = SafeNestError.unsupportedType(obj: nil, path: "")
+    let error1 = SafeNestError.notArrayCompatible(obj: nil)
+    let error2 = SafeNestError.unsupportedType(obj: nil, path: "")
     
     /// When && Then
     XCTAssertNotNil(error1.errorDescription)
+    XCTAssertNotNil(error2.errorDescription)
   }
   
   public func test_accessAndUpdateDict() throws {
@@ -59,6 +61,19 @@ public final class UtilTests: XCTestCase {
     XCTAssertEqual(old3 as? Int, 3)
     XCTAssertEqual(old4 as? Int, nil)
     XCTAssertEqual(old5 as? [Int], arr)
-    XCTAssertThrowsError(try updateObjectPath(arr, "-1", 1)) {XCTAssertTrue($0 is SafeNestError)}
+
+    XCTAssertThrowsError(try updateObjectPath(arr, "-1", 1)) {
+      XCTAssertTrue($0 is SafeNestError)
+    }
+  }
+  
+  public func test_extractArray() throws {
+    /// Setup && When && Then
+    XCTAssertEqual(try extractArray([String : Any](), Int.self), [])
+    XCTAssertEqual(try extractArray([Any](), Int.self), [])
+    
+    XCTAssertThrowsError(try extractArray(1, Int.self)) {
+      XCTAssertTrue($0 is SafeNestError)
+    }
   }
 }

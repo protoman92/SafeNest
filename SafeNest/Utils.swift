@@ -7,6 +7,7 @@
 //
 
 public enum SafeNestError: Error, LocalizedError {
+  case notArrayCompatible(obj: Any?)
   case unsupportedType(obj: Any?, path: String)
   
   public var errorDescription: String? {
@@ -15,6 +16,9 @@ public enum SafeNestError: Error, LocalizedError {
   
   public var localizedDescription: String {
     switch self {
+    case .notArrayCompatible(let obj):
+      return "\(String(describing: obj)) is not Array-compatible"
+      
     case .unsupportedType(let obj, let path):
       return "Unsupported data type \(String(describing: obj)) for path \(path)"
     }
@@ -68,3 +72,12 @@ func updateObjectPath(_ obj: Any?, _ path: String, _ value: Any?) throws
   return try mapObjectPath(obj, path, {_ in value})
 }
 
+func extractArray<T>(_ obj: Any?, _ ofType: T.Type) throws -> [T] {
+  if let dict = obj as? [String : T] {
+    return Array(dict.values)
+  } else if let array = obj as? [T] {
+    return array
+  }
+  
+  throw SafeNestError.notArrayCompatible(obj: obj)
+}
