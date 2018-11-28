@@ -7,6 +7,11 @@
 //
 
 public extension SafeNest {
+  public typealias Mapper = (Any?) throws -> Any?
+  public typealias TypedMapper<T1, T2> = (T1?) throws -> T2?
+}
+
+public extension SafeNest {
 
   /// Maps a value at a node internally. This method mutates.
   ///
@@ -15,20 +20,19 @@ public extension SafeNest {
   ///   - mapper: The mapper function.
   /// - Returns: The old value found at the end of the paths.
   /// - Throws: If mapping fails.
-  private mutating func _map(_ subpaths: [String],
-                             _ mapper: (Any?) throws -> Any?) throws -> Any? {
+  private mutating func _map(_ subpaths: [String], _ fn: Mapper) throws -> Any? {
     var oldValue: Any? = nil
     
     if let subpath0 = subpaths.first {
       if subpaths.count == 1 {
-        let (updated, old) = try mapObjectPath(self.object, subpath0, mapper)
+        let (updated, old) = try mapObjectPath(self.object, subpath0, fn)
         self.setUnsafely(updated)
         oldValue = old
       } else if subpaths.count > 1 {
         let object0 = accessObjectPath(self.object, subpath0) ?? [String : Any]()
         var subNest = self.clone()
         subNest.setUnsafely(object0)
-        oldValue = try subNest._map(Array(subpaths[1...]), mapper)
+        oldValue = try subNest._map(Array(subpaths[1...]), fn)
         let (updated, _) = try updateObjectPath(self.object, subpath0, subNest.object)
         self.setUnsafely(updated)
       }
@@ -47,8 +51,7 @@ public extension SafeNest {
   ///   - fn: The mapper function.
   /// - Returns: The old value found at the specified node.
   /// - Throws: If mapping fails.
-  public mutating func map(at node: String = "",
-                           withMapper fn: (Any?) throws -> Any?) throws -> Any? {
+  public mutating func map(at node: String = "", withMapper fn: Mapper) throws -> Any? {
     let nodeComponents = node.components(separatedBy: self.pathSeparator)
     return try self._map(nodeComponents, fn)
   }
@@ -61,8 +64,43 @@ public extension SafeNest {
   ///   - fn: The mapper function.
   /// - Returns: A new nest.
   /// - Throws: If mapping fails.
-  public func mapping(at node: String = "",
-                      withMapper fn: (Any?) throws -> Any?) throws -> SafeNest {
+  public func mapping(at node: String = "", withMapper fn: Mapper) throws -> SafeNest {
+    var clonedNest = self.clone()
+    _ = try clonedNest.map(at: node, withMapper: fn)
+    return clonedNest
+  }
+}
+
+public extension SafeNest {
+
+  /// This method maps an inner value from one type to another, and mutates
+  /// the current nest.
+  ///
+  /// - Parameters:
+  ///   - node: The path at which to map.
+  ///   - fn: The mapper function.
+  /// - Returns: The old value at the specified node.
+  /// - Throws: If mapping fails.
+  public mutating func map<T1, T2>(
+    at node: String = "",
+    withMapper fn: @escaping TypedMapper<T1, T2>) throws -> Any?
+  {
+    let typedMapper: (Any?) throws -> Any? = {try fn($0 as? T1)}
+    return try self.map(at: node, withMapper: typedMapper)
+  }
+  
+  /// This method maps an inner value from one type to another and returns a
+  /// new nest instance.
+  ///
+  /// - Parameters:
+  ///   - node: The path at which to map.
+  ///   - fn: The mapper function.
+  /// - Returns: A new nest.
+  /// - Throws: If mapping fails.
+  public func mapping<T1, T2>(
+    at node: String = "",
+    withMapper fn: @escaping TypedMapper<T1, T2>) throws -> SafeNest
+  {
     var clonedNest = self.clone()
     _ = try clonedNest.map(at: node, withMapper: fn)
     return clonedNest

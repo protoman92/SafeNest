@@ -59,7 +59,7 @@ public final class BasicTests: XCTestCase {
     safeNest = try safeNest
       .updating(at: path3, value: value3)
       .updating(at: path4, value: value4)
-      .mapping(at: path5, withMapper: {"\($0!)"})
+      .mapping(at: path5, withMapper: {(v: Int?) in v.map({$0 * 10})})
     
     /// Then
     XCTAssertNil(old1)
@@ -68,7 +68,7 @@ public final class BasicTests: XCTestCase {
     XCTAssertEqual(safeNest.value(at: path2).value as? Int, value2)
     XCTAssertEqual(safeNest.value(at: path3).value as? String, value3)
     XCTAssertEqual(safeNest.value(at: "\(path4).z10").value as? Int, value4["z10"])
-    XCTAssertEqual(safeNest.value(at: path5).value as? String, "2")
+    XCTAssertEqual(safeNest.value(at: path5).value as? Int, 20)
   }
   
   public func test_copyAndMoveNestedProps() throws {

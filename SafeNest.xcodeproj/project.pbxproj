@@ -17,6 +17,7 @@
 		D30CFC4A21A8827A00F9136A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30CFC4921A8827A00F9136A /* Assets.xcassets */; };
 		D30CFC4D21A8827A00F9136A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30CFC4B21A8827A00F9136A /* LaunchScreen.storyboard */; };
 		D3160BB221A47028006A12F3 /* SafeNest+Stress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3160BB121A47028006A12F3 /* SafeNest+Stress.swift */; };
+		D317ECC421AE6CEE00FDEB0C /* SafeNest.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D317ECC321AE6CEE00FDEB0C /* SafeNest.podspec */; };
 		D319EE1821A2FFA000C3F79F /* SafeNest+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */; };
 		D319EE1A21A303A400C3F79F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1921A303A400C3F79F /* Utils.swift */; };
 		D319EE1C21A3050100C3F79F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319EE1B21A3050100C3F79F /* Utils.swift */; };
@@ -60,6 +61,7 @@
 		D30CFC4C21A8827A00F9136A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D30CFC4E21A8827A00F9136A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3160BB121A47028006A12F3 /* SafeNest+Stress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+Stress.swift"; sourceTree = "<group>"; };
+		D317ECC321AE6CEE00FDEB0C /* SafeNest.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SafeNest.podspec; sourceTree = "<group>"; };
 		D319EE1721A2FFA000C3F79F /* SafeNest+Modify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeNest+Modify.swift"; sourceTree = "<group>"; };
 		D319EE1921A303A400C3F79F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D319EE1B21A3050100C3F79F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -149,13 +151,14 @@
 		D3576ED521A2DFD70066898F = {
 			isa = PBXGroup;
 			children = (
+				2DBB4396D7557517FD8D3AF2 /* Frameworks */,
+				449BD7FD96FD9770FD5D2ED4 /* Pods */,
+				D3576EE021A2DFD70066898F /* Products */,
 				D30CFC2421A87D8200F9136A /* README.md */,
 				D3576EE121A2DFD70066898F /* SafeNest */,
-				D3576EEC21A2DFD70066898F /* SafeNestTests */,
+				D317ECC321AE6CEE00FDEB0C /* SafeNest.podspec */,
 				D30CFC4121A8827800F9136A /* SafeNestDemo */,
-				D3576EE021A2DFD70066898F /* Products */,
-				449BD7FD96FD9770FD5D2ED4 /* Pods */,
-				2DBB4396D7557517FD8D3AF2 /* Frameworks */,
+				D3576EEC21A2DFD70066898F /* SafeNestTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D30CFC2521A87D8300F9136A /* README.md in Resources */,
+				D317ECC421AE6CEE00FDEB0C /* SafeNest.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,6 +711,7 @@
 				DEVELOPMENT_TEAM = MHY2SWZ976;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = SafeNestTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -730,6 +735,7 @@
 				DEVELOPMENT_TEAM = MHY2SWZ976;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = SafeNestTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -46,13 +46,13 @@ extension NavigationController.Dependency: ViewControllerDependencyFactory {
   public func dependencyForViewController() -> ViewController.Dependency {
     return ViewController.Dependency(
       stateStream: self.dependency.store
-        .stateStream()
+        .stateStream
         .map({$0.decode(at: Redux.credentialPath, ofType: ViewController.State.self)})
         .filter({$0.value != nil})
         .map({try $0.getOrThrow()})
         .distinctUntilChanged(),
       credentialsReceiver: self.dependency.store
-        .actionTrigger()
+        .actionTrigger
         .mapObserver(Redux.CredentialAction.changeLoginCredentials)
     )
   }

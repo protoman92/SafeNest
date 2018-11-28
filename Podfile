@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, '9.0'
 
 target 'SafeNest' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
@@ -19,7 +19,8 @@ target 'SafeNest' do
     
     pod 'HMReactiveRedux', git: 'https://github.com/protoman92/HMReactiveRedux-Swift', subspecs: [
       "Main",
-      "Rx"
+      "Rx",
+      "UI"
     ]
     
     pod 'RxDataSources'
